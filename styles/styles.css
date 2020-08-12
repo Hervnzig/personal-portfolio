@@ -242,8 +242,6 @@ img {
     max-width: 45%;
 }
 
-
-
 .about-connect a {
     margin: 10px;
     padding: 10px 20px;
@@ -265,8 +263,7 @@ img {
 
 
 
-
-
+/* Footer design */
 .footer-parent {
     background-color: #F5F5F7;
     box-sizing: border-box;
@@ -287,26 +284,11 @@ img {
     width: 40%;
 }
 
-
-
-.footer-parent .footer-links {
-    margin: 20px 0 12px;
-    padding: 0;
-}
-
-.footer-parent .footer-links a {
-    display: inline-block;
-    line-height: 1.8;
-    text-decoration: none;
-    color: inherit;
-}
-
 .footer-parent .footer-company-name {
     font-size: 14px;
     font-weight: normal;
     margin: 0;
 }
-
 
 .footer-parent .footer-center {
     width: 35%;
@@ -321,11 +303,6 @@ img {
     line-height: 42px;
     margin: 10px 15px;
     vertical-align: middle;
-}
-
-.footer-parent .footer-center i.fa-envelope {
-    font-size: 17px;
-    line-height: 38px;
 }
 
 .footer-parent .footer-center p {
