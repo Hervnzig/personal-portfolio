@@ -5,19 +5,37 @@ body {
     margin: 0;
     padding: 0;
     color: #373636;
+    /* font-size: 13px; */
 }
 
-.home-class {
-    width: 100%;
-    height: 100%;
-    background-color: brown;
+@media screen and (min-width: 768px) {
+    .home-class {
+        width: 100%;
+        height: 100%;
+    }
+
+    .main-content {
+        display: flex;
+        margin: 6em 6em 0 6em;
+        padding: 2em;
+    }
+
+    .parent-container {
+        max-width: 1440px;
+        margin: 0 auto !important;
+    }
+
+    mark {
+        line-height: 0em !important;
+    }
+
 }
 
-.main-content {
-    display: flex;
-    margin: 6em 6em 0 6em;
-    padding: 2em;
+.parent-container {
+    min-width: 288px;
+    margin: auto 1em;
 }
+
 
 h1 {
     font-weight: bold;
@@ -27,9 +45,11 @@ h1 {
 
 ul li {
     list-style-type: none;
-    text-align-last: end;
-    margin-right: 5.5em;
+    text-align-last: left;
     line-height: 25px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-block-item ol li {
@@ -86,16 +106,14 @@ a {
     display: flex;
     justify-content: right;
     align-items: center;
+    padding: 10px 0;
 }
 
 .socials div a {
     margin: 5px;
 }
 
-.parent-container {
-    max-width: 1440px;
-    margin: 0 auto !important;
-}
+
 
 .free-quote {
     text-align: center;
@@ -105,7 +123,6 @@ a {
 
 mark {
     display: inline-block;
-    line-height: 0em;
     padding-bottom: 0.6em;
     background-color: #ece8ea;
 }
