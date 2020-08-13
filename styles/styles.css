@@ -68,7 +68,7 @@ body {
     }
 
     /* Product page */
-    .project-type section {
+    .main-section section {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
@@ -419,7 +419,7 @@ h2 {
     text-transform: lowercase;
 }
 
-.project-type h3 {
+.main-section h3 {
     border-top: 3px solid #a8aaa9;
     border-bottom: 3px solid #a8aaa9;
     padding: 5px 20px;
@@ -427,4 +427,21 @@ h2 {
     max-width: 200px;
     margin: 1em auto;
     min-width: 50px;
+}
+
+/* Resume page */
+.box-resume {
+    box-shadow: -1px 1px 11px 0px rgb(140 137 137 / 12%);
+    padding: 10px;
+    border-right: 4px solid #e8e8e8c4;
+    border-left: 4px solid #e8e8e8c4;
+    margin: 2em;
+}
+
+.box-resume div h4 {
+    border-bottom: 2px solid;
+    max-width: 200px;
+    margin: 1em auto;
+    text-align: center;
+    padding: 8px;
 }
