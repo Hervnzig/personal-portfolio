@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles/styles.css" rel="stylesheet" />
+    <title>Write a new blog</title>
+  </head>
+  <body>
+    <nav>
+      <section class="nav-container adjuster main-width-adjust">
+        <h1><a href="./index.html">Herve.</a></h1>
+        <section class="menu-block">
+          <section class="menu">
+            <a href="./about.html">About</a>
+            <a href="./projects.html">My Projects</a>
+            <a href="./blog-page.html">Blog</a>
+            <a href="./resume.html">Resume</a>
+            <a href="#">Contact Me</a>
+          </section>
+          <section class="authentication">
+            <a href="#">Sign in</a>
+          </section>
+        </section>
+      </section>
+    </nav>
+
+    <section class="main-width-adjust">
+      <h2>Post your new blog</h2>
+      <div class="form-container">
+        <form action="./blogs_dash.html">
+          <div class="row">
+            <div class="label-input-field">
+              <label for="fname">Blog title</label>
+            </div>
+            <div class="input-field">
+              <input
+                type="text"
+                id="blgtitle"
+                name="title"
+                placeholder="Title of the blog.."
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="label-input-field">
+              <label for="profession">Category</label>
+            </div>
+            <div class="input-field">
+              <select id="profession" name="profession">
+                <option value="mobiledev">Mobile app dev</option>
+                <option value="websitedev">Web dev</option>
+                <option value="design">Design</option>
+                <option value="iot">IoT</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="label-input-field">
+              <label for="subject">Body</label>
+            </div>
+            <div class="input-field">
+              <textarea
+                id="subject"
+                class="body-content"
+                name="subject"
+                placeholder="Begin your blog here.."
+              ></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <input type="submit" value="Save" />
+          </div>
+        </form>
+      </div>
+      <h4><a href="./blogs_dash.html">Blogs dashboard</a></h4>
+    </section>
+  </body>
+</html>
