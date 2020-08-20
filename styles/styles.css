@@ -33,14 +33,12 @@ body {
         line-height: 0em !important;
     }
 
-    /* Navigation bar and screen width */
-    .adjuster {
-        margin: auto 6em;
-    }
 
-    .nav-container {
+    /* Nav bar */
+
+    /* .nav-container {
         display: flex;
-    }
+    } */
 
 
     .menu {
@@ -180,7 +178,7 @@ a {
     display: flex;
     justify-content: right;
     align-items: center;
-    padding: 10px 0;
+    padding: 10px 5px;
 }
 
 .socials div a {
@@ -204,13 +202,17 @@ mark {
 /* --- About page --- */
 nav {
     background-color: #F5F5F7;
+    overflow: hidden;
 }
 
 
+/* ====== Nav bar ====== */
+
+
 .nav-container h1 {
-    flex: 0.5;
-    padding: 0;
     margin: 0;
+    float: left;
+    width: 25%;
 }
 
 .menu {
@@ -242,9 +244,37 @@ nav {
 
 .menu-block {
     flex: 1.5;
-    padding: 0;
     margin: 0;
 }
+
+/* ---------------------------------- */
+.menu-block a {
+    margin: 0;
+    padding: 10px;
+    border-bottom: 3px solid transparent;
+    font-weight: 100;
+}
+
+.nav-container .authentication {
+    float: right;
+    width: 20%;
+    padding: 12px;
+    text-align: right;
+}
+
+.menu-block .authentication {
+    margin: 0;
+    padding: 11px;
+    border-bottom: 3px solid transparent;
+    font-weight: 100;
+}
+
+.menu-block a:hover {
+    border-bottom: 3px solid black;
+}
+
+
+/* --------------------------------------- */
 
 .authentication {
     padding: 12px;
@@ -322,16 +352,38 @@ h2 {
     width: 35%;
 }
 
-.footer-parent .footer-center i {
-    font-size: 25px;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 42px;
-    margin: 10px 15px;
-    vertical-align: middle;
+.newsletter {
+    padding: 10px 0;
+    color: #fff;
 }
+
+.newsletter p {
+    text-align: center;
+    line-height: 34px;
+}
+
+.newsletter-box {
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+}
+
+
+.newsletter .newsletter-box button {
+    color: #fff;
+    padding: 0 15px;
+    cursor: pointer;
+    background: black;
+    height: 40px;
+    border-left: white;
+    border-top: white;
+    border-bottom: white;
+    width: fit-content;
+}
+
+
+
 
 .footer-parent .footer-center p {
     display: inline-block;
@@ -489,7 +541,12 @@ h2 {
 }
 
 .blog-desc p {
-    padding: 10px;
+    padding: 10px 10px 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .blog-desc a {
@@ -515,6 +572,20 @@ h2 {
 
     .blog-desc a {
         float: none;
+    }
+
+    /* subscribe to newsletter */
+    .newsletter-box {
+        display: block;
+    }
+
+    input.emailbox {
+        padding: 15px;
+    }
+
+    .newsletter .newsletter-box button {
+        width: fit-content;
+        margin: 8px 0;
     }
 
     /* create new blog */
