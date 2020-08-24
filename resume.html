@@ -1,131 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
-    <link href="styles/styles.css" rel="stylesheet" />
-    <title>My Accomplishments and skills</title>
-  </head>
-  <body>
-    <nav>
-      <section class="nav-container adjuster main-width-adjust">
-        <h1><a href="./index.html">Herve.</a></h1>
-        <section class="menu-block">
-          <section class="menu">
-            <a href="./about.html">About</a>
-            <a href="./projects.html">My Projects</a>
-            <a href="./blog-page.html">Blog</a>
-            <a href="./resume.html">Resume</a>
-            <a href="#">Contact Me</a>
-          </section>
-          <section class="authentication">
-            <a href="#">Sign in</a>
-          </section>
-        </section>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+  <link href="styles/styles.css" rel="stylesheet" />
+  <title>My Accomplishments and skills</title>
+</head>
+
+<body>
+  <nav>
+    <div class="nav main-width-adjust">
+      <div class="nav-header">
+        <div class="nav-title">
+          <h1><a href="#">Herve.</a></h1>
+        </div>
+      </div>
+      <div class="nav-btn">
+        <label for="nav-check">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+      <input type="checkbox" id="nav-check" />
+      <div class="nav-links">
+        <a href="./about.html">About</a>
+        <a href="./projects.html">My Projects</a>
+        <a href="./blog-page.html">Blog</a>
+        <a href="./resume.html">Resume</a>
+        <a href="./contact.html">Contact Me</a>
+        <a href="#">Connect</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="content-project main-width-adjust">
+    <section class="main-section">
+      <h3>My Resume/CV</h3>
+      <p>
+        Want to know more about me. Here is my portfolio, my Resume including
+        my Skills experience and more. It's a fact, software engineers need
+        YouTube in their life.
+      </p>
+      <section class="box-resume">
+        <div>
+          <h4>
+            Work experience
+          </h4>
+          <ol>
+            <li>Andela stackup program apprentice (2020 -)</li>
+            <li>Andela Campus coders lead (2019 - 2020)</li>
+            <li>Junior foll stack engineer (2018 - 2019)</li>
+          </ol>
+        </div>
+        <div>
+          <h4>
+            Skills
+          </h4>
+          <ol>
+            <li>Web development</li>
+            <li>Mobile apps development</li>
+            <li>Automation testing</li>
+          </ol>
+        </div>
       </section>
-    </nav>
 
-    <section class="content-project main-width-adjust">
-      <section class="main-section">
-        <h3>My Resume/CV</h3>
-        <p>
-          Want to know more about me. Here is my portfolio, my Resume including
-          my Skills experience and more. It's a fact, software engineers need
-          YouTube in their life.
+      <section class="box-resume">
+        <div>
+          <h4>
+            Programming languages
+          </h4>
+          <ol>
+            <li>Java</li>
+            <li>Javascript</li>
+            <li>Python</li>
+            <li>PHP</li>
+          </ol>
+        </div>
+      </section>
+      <a href="#">
+        <h4>Click here to view/download complete resume</h4>
+      </a>
+    </section>
+  </section>
+
+  <footer class="footer-parent">
+    <section class="main-width-adjust">
+      <section class="footer-left">
+        <h1>Herve Musangwa.</h1>
+
+        <p class="footer-links">
+          <a href="#">Home</a>
+          ·
+          <a href="#">Subscribe</a>
+          ·
+          <a href="#">Quick links</a>
+          ·
+          <a href="#">Contact</a>
         </p>
-        <section class="box-resume">
-          <div>
-            <h4>
-              Work experience
-            </h4>
-            <ol>
-              <li>Andela stackup program apprentice (2020 -)</li>
-              <li>Andela Campus coders lead (2019 - 2020)</li>
-              <li>Junior foll stack engineer (2018 - 2019)</li>
-            </ol>
-          </div>
-          <div>
-            <h4>
-              Skills
-            </h4>
-            <ol>
-              <li>Web development</li>
-              <li>Mobile apps development</li>
-              <li>Automation testing</li>
-            </ol>
-          </div>
-        </section>
 
-        <section class="box-resume">
-          <div>
-            <h4>
-              Programming languages
-            </h4>
-            <ol>
-              <li>Java</li>
-              <li>Javascript</li>
-              <li>Python</li>
-              <li>PHP</li>
-            </ol>
+        <p class="footer-company-name">Herve &copy; 2020</p>
+      </section>
+
+      <section class="footer-center">
+        <div>
+          <p><span>KK 780 st</span> Kigali, Rwanda</p>
+        </div>
+
+        <div>
+          <p>+250 787 947290</p>
+        </div>
+
+        <div>
+          <p>
+            <a href="mailto:support@company.com">hervnzig1@gmail.com</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="footer-right">
+        <p class="footer-company-about">
+          <span>Subscribe to our newsletter</span>
+          Stay up to date with the new content especially from my blogs.
+        </p>
+        <form action="" class="newsletter">
+          <div class="newsletter-box">
+            <input class="emailbox" type="email" name="" value="" placeholder="Enter your email id" />
+            <button type="button" name="button">Subscribe</button>
           </div>
-        </section>
-        <a href="#"><h4>Click here to view/download complete resume</h4></a>
+        </form>
       </section>
     </section>
+  </footer>
+</body>
 
-    <footer class="footer-parent">
-      <section class="main-width-adjust">
-        <section class="footer-left">
-          <h1>Herve Musangwa.</h1>
-
-          <p class="footer-links">
-            <a href="#">Home</a>
-            ·
-            <a href="#">Subscribe</a>
-            ·
-            <a href="#">Quick links</a>
-            ·
-            <a href="#">Contact</a>
-          </p>
-
-          <p class="footer-company-name">Herve &copy; 2020</p>
-        </section>
-
-        <section class="footer-center">
-          <div>
-            <p><span>KK 780 st</span> Kigali, Rwanda</p>
-          </div>
-
-          <div>
-            <p>+250 787 947290</p>
-          </div>
-
-          <div>
-            <p>
-              <a href="mailto:support@company.com">hervnzig1@gmail.com</a>
-            </p>
-          </div>
-        </section>
-
-        <section class="footer-right">
-          <p class="footer-company-about">
-            <span>Subscribe to our newsletter</span>
-            Stay up to date with the new content especially from my blogs.
-          </p>
-          <form action="" class="newsletter">
-            <div class="newsletter-box">
-              <input
-                class="emailbox"
-                type="email"
-                name=""
-                value=""
-                placeholder="Enter your email id"
-              />
-              <button type="button" name="button">Subscribe</button>
-            </div>
-          </form>
-        </section>
-      </section>
-    </footer>
-  </body>
 </html>

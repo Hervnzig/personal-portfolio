@@ -41,9 +41,9 @@ body {
     } */
 
 
-    .menu {
+    /* .menu {
         float: left;
-    }
+    } */
 
     .authentication {
         float: right;
@@ -208,85 +208,133 @@ nav {
 
 /* ====== Nav bar ====== */
 
+.nav {
+    height: 50px;
+    width: 100%;
 
-.nav-container h1 {
-    margin: 0;
-    float: left;
-    width: 25%;
+    position: relative;
 }
 
-.menu {
-    padding: 12px;
-    margin: 0;
+.nav>.nav-header {
+    display: inline-block;
 }
 
-.menu a {
-    margin: 0 5px;
-    color: black;
-    padding: 12px 10px;
+.nav>.nav-header>.nav-title {
+    display: inline-block;
+    color: #fff;
+}
+
+nav {
+    background-color: #F5F5F7;
+}
+
+
+.main-width-adjust {
+    max-width: 1024px;
+    margin: 0 auto !important;
+}
+
+.nav-title h1 a {
     text-decoration: none;
-    font-style: normal;
-    font-weight: 100;
-    font-size: 13px;
-    line-height: 24px;
-    border-bottom: 3px solid #10101000;
+    color: #373636;
+    padding: 2px;
+    display: flex;
 }
 
-.menu a:hover {
-    border-bottom: 3px solid black;
-    font-weight: bold;
-}
-
-.menu a:active {
-    border-bottom: 3px solid black;
-    font-weight: bold;
-}
-
-.menu-block {
-    flex: 1.5;
+.nav-title h1 {
     margin: 0;
+    border-bottom: #373636;
 }
 
-/* ---------------------------------- */
-.menu-block a {
-    margin: 0;
-    padding: 10px;
-    border-bottom: 3px solid transparent;
-    font-weight: 100;
+.nav>.nav-btn {
+    display: none;
 }
 
-.nav-container .authentication {
+.nav>.nav-links {
+    display: inline-block;
     float: right;
-    width: 20%;
-    padding: 12px;
-    text-align: right;
 }
 
-.menu-block .authentication {
-    margin: 0;
-    padding: 11px;
+.nav>.nav-links>a {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: #373636;
     border-bottom: 3px solid transparent;
     font-weight: 100;
 }
 
-.menu-block a:hover {
-    border-bottom: 3px solid black;
+.nav>.nav-links>a:hover {
+    border-bottom-color: black;
 }
 
-
-/* --------------------------------------- */
-
-.authentication {
-    padding: 12px;
-    margin: 0;
+.nav>#nav-check {
+    display: none;
 }
 
-.authentication a {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 13px;
-    line-height: 24px;
+@media (max-width:600px) {
+    .nav>.nav-btn {
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+    }
+
+    .nav>.nav-btn>label {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        padding: 13px;
+    }
+
+    .nav>.nav-btn>label:hover {
+        background-color: rgb(181 178 178 / 30%);
+    }
+
+    .nav>.nav-btn>label>span {
+        display: block;
+        width: 25px;
+        height: 10px;
+        border-top: 2px solid #373636;
+    }
+
+    .nav>.nav-links {
+        /* position: absolute; */
+        display: block;
+        width: 100%;
+        background-color: #e2e1e2;
+        height: 0px;
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+        top: 50px;
+        left: 0px;
+    }
+
+    .nav>.nav-links>a {
+        display: block;
+        width: 100%;
+    }
+
+    .nav>#nav-check:not(:checked)+.nav-links {
+        height: 0px;
+    }
+
+    .nav>#nav-check:checked+.nav-links {
+        height: calc(100vh - 50px);
+        overflow-y: auto;
+    }
+
+    .nav>.nav-links>a:hover {
+        background: rgb(181 178 178 / 30%);
+        border-bottom: 3px solid transparent;
+    }
+
+    .nav-title h1 a {
+        padding: 2px 13px;
+    }
 }
+
+/* ===== Navigation ===== */
 
 h2 {
     text-align: center;
