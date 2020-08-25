@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles/styles.css" rel="stylesheet" />
+    <link href="./styles/styles.css" rel="stylesheet" />
     <title>Let's talk</title>
 </head>
 
@@ -36,15 +36,31 @@
             </div>
         </nav>
 
-        <section class="main-container adjuster main-width-adjust">
-            <h2>Me in a Summary</h2>
-            <div class="about-main">
-                <p>Umuhango w'ihererekanyabubasha hagati y'Ubuyobozi bwa
-                    @RBCRwanda
-                    n'ubuyobozi bwa sosiyete nshya yitwa Rwanda Medical Supply ishinzwe kugura, kubika no kugeza imiti
-                    ku baturarwanda wabaye ku wa 21.08.2020 uyobowe n'Umunyamabanga Uhoraho muri
-                    @RwandaHealth
-                    Bwana Zacharie Iyakaremye</p>
+        <section class="main-width-adjust">
+            <h2>Write to me. I reply back after 5 hours</h2>
+            <div class="form-container">
+                <form action="./blogs_dash.html">
+                    <div class="row">
+                        <div class="label-input-field">
+                            <label for="fname">Title</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" id="blgtitle" name="title" placeholder="Title of the message.." />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="label-input-field">
+                            <label for="subject">Body</label>
+                        </div>
+                        <div class="input-field">
+                            <textarea id="subject" class="body-content" name="subject"
+                                placeholder="Type your message here.."></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="submit" value="Send" />
+                    </div>
+                </form>
             </div>
         </section>
     </section>
