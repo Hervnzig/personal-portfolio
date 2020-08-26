@@ -69,6 +69,13 @@
           </div>
         </div>
         <div class="row">
+          <div class="label-input-field">
+            <label for="subject">Blog Image</label>
+          </div>
+          <div class="input-field">
+            <input type="file" accept="image/*" onchange="preview_image(event)">
+            <img id="output_image" />
+          </div>
         </div>
         <div class="row">
           <input type="submit" value="Save" />
