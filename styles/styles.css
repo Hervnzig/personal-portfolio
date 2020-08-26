@@ -334,6 +334,7 @@ h2 {
 }
 
 .about-connect a {
+    display: inline-block;
     margin: 10px;
     padding: 10px 20px;
     background: #FFFFFF;
