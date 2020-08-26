@@ -1,1 +1,1 @@
-// Modal screen for admin sign up and guest login
+// Create blog, display blog image

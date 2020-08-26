@@ -4,6 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
   <link href="./styles/styles.css" rel="stylesheet" />
   <title>Welcome to my updates</title>
 </head>
@@ -38,28 +47,11 @@
   <section class="main-width-adjust">
     <h2>Time to read</h2>
     <section>
-      <div class="blog-item">
-        <div class="item-pic">
-          <img class="image-styling" src="./assets/blog_pic1.png" />
-        </div>
-        <div class="blog-desc">
-          <h4>Welcome to IoT</h4>
-          <p>
-            The Internet of Things, or IoT, refers to the billions of physical
-            devices around the world that are now connected to the internet,
-            all collecting and sharing data. ... The Internet of Things is
-            making the fabric of the world around us more smarter and more
-            responsive, merging the digital and physical universes.
-          </p>
-          <a href="./read-blog.html">Read more</a>
-        </div>
-      </div>
+      <div class="blog-item" id="blog-snapshot"></div>
 
-      <div class="blog-item">
-        <div class="item-pic">
-          <img class="image-styling" src="./assets/blog_pic2.png" />
-        </div>
-        <div class="blog-desc">
+      <div class="blog-item" id="blog-snapshot">
+        <img src="./assets/blog_pic2.png" />
+        <div>
           <h4>Project Io</h4>
           <p>
             awesome products and bring exciting new opportunities through your
@@ -70,8 +62,10 @@
           <a href="./read-blog.html">Read more</a>
         </div>
       </div>
+
     </section>
   </section>
+
 
   <footer class="footer-parent">
     <section class="main-width-adjust">
@@ -121,6 +115,24 @@
       </section>
     </section>
   </footer>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDA46t6qsRN4NQE8KbZPYhlndI2yovrOzo",
+      authDomain: "web-portfolio-blog.firebaseapp.com",
+      databaseURL: "https://web-portfolio-blog.firebaseio.com",
+      projectId: "web-portfolio-blog",
+      storageBucket: "web-portfolio-blog.appspot.com",
+      messagingSenderId: "782884425067",
+      appId: "1:782884425067:web:8f8fc3eec7d76752e4502e",
+      measurementId: "G-SGLTSJ1ZPH"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+  <script src="./scripts/script.js"></script>
 </body>
 
 </html>
