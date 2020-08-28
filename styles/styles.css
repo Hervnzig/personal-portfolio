@@ -579,7 +579,7 @@ h2 {
     box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.18);
 }
 
-.blog-item a {
+.blog-item .to-read-full-blog {
     float: right;
     padding: 10px;
     background: black;
