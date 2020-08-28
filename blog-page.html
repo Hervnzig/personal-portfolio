@@ -5,14 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
   <link href="./styles/styles.css" rel="stylesheet" />
   <title>Welcome to my updates</title>
 </head>
@@ -47,21 +42,26 @@
   <section class="main-width-adjust">
     <h2>Time to read</h2>
     <section>
-      <div class="blog-item" id="blog-snapshot"></div>
-
-      <div class="blog-item" id="blog-snapshot">
-        <img src="./assets/blog_pic2.png" />
-        <div>
-          <h4>Project Io</h4>
-          <p>
-            awesome products and bring exciting new opportunities through your
-            front door. But unless you've hired people to take on the task of
-            managing your employees, then you're still on the hook. The good
-            and your organization will benefit as a direct result.
-          </p>
-          <a href="./read-blog.html">Read more</a>
+      <div id="posts_collection"></div>
+      <!-- 
+      <div id="posts_collection">
+        <div class="blog-item">
+          <img src="./assets/blog_pic2.png" />
+          <div>
+            <h4>Project Io</h4>
+            <address class="author">Jason Gennaro</address>
+            <span class="date">2020-08-27</span>
+            <p>
+              awesome products and bring exciting new opportunities through your
+              front door. But unless you've hired people to take on the task of
+              managing your employees, then you're still on the hook. The good
+              and your organization will benefit as a direct result.
+            </p>
+            <a href="#" class="hash-tag">Web dev</a>
+            <a href="./read-blog.html">Read more</a>
+          </div>
         </div>
-      </div>
+      </div> -->
 
     </section>
   </section>
@@ -116,23 +116,8 @@
     </section>
   </footer>
 
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyDA46t6qsRN4NQE8KbZPYhlndI2yovrOzo",
-      authDomain: "web-portfolio-blog.firebaseapp.com",
-      databaseURL: "https://web-portfolio-blog.firebaseio.com",
-      projectId: "web-portfolio-blog",
-      storageBucket: "web-portfolio-blog.appspot.com",
-      messagingSenderId: "782884425067",
-      appId: "1:782884425067:web:8f8fc3eec7d76752e4502e",
-      measurementId: "G-SGLTSJ1ZPH"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
-  <script src="./scripts/script.js"></script>
+
+  <script src="./scripts/app.js"></script>
 </body>
 
 </html>
