@@ -22,7 +22,39 @@ const createForm = document.querySelector("#createFrom");
 const progressBar = document.querySelector("#progressBar");
 const progressHandler = document.querySelector("#progressHandler");
 const postSubmit = document.querySelector("#postSubmit");
+const progressCount = document.querySelector("#progress_count");
+const warningForm = document.querySelector("#warning");
 
+const getPosts = async () => {
+  let postsArray = [];
+  let docs = await firebase
+    .firestore()
+    .collection("posts")
+    .get()
+    .catch((err) => {
+      console.log(err);
+    });
+  docs.forEach((doc) => {
+    postsArray.push({ id: doc.id, data: doc.data() });
+  });
+
+  createChildren(postsArray);
+};
+
+const getPost = async () => {
+  let postId = getPostIdFromURL();
+};
+
+// display read blog page
+const getPostIdFromURL = () => {
+  let postLocation = window.location.href;
+  let hrefArray = postLocation.split("/");
+  let postId = hrefArray.slice(-1).pop();
+
+  return postId;
+};
+
+// Create new Post and upload
 if (createForm !== null) {
   let d;
   createForm.addEventListener("submit", async (e) => {
@@ -43,7 +75,7 @@ if (createForm !== null) {
       let blog_date = document.getElementById("blogDate").value;
       let blog_img = document.getElementById("blogImage").files[0];
 
-      console.log(blog_img);
+      // console.log(blog_img);
 
       const storageRef = firebase.storage().ref();
       const storageChild = storageRef.child(blog_img.name);
@@ -56,7 +88,7 @@ if (createForm !== null) {
           (snapshot) => {
             let progress =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log(Math.trunc(progress));
+            progressCount.innerHTML = "Progress " + Math.trunc(progress) + " %";
 
             if (progressHandler !== null) {
               progressHandler.style.display = true;
@@ -100,73 +132,82 @@ if (createForm !== null) {
         postSubmit.disabled = false;
       } else {
         console.log("Must fill in all fields before submitting");
-        alert("Must fill in all fields before submitting");
+        warningForm.innerHTML = "Must fill in all fields before submitting";
       }
     }
   });
 }
 
-function loadPost(image, title, author, date, content, hashTag) {
-  let parentDiv = document.createElement("div");
-  parentDiv.setAttribute("class", "blog-item");
+const createChildren = (arr) => {
+  if (postCollection !== null) {
+    arr.map((post) => {
+      // console.log(post);
+      let parentDiv = document.createElement("div");
+      parentDiv.setAttribute("class", "blog-item");
 
-  let img = document.createElement("img");
-  let childDiv = document.createElement("div");
-  let h4 = document.createElement("h4");
-  let authorParagraph = document.createElement("address");
-  authorParagraph.setAttribute("class", "author");
-  let dateParagraph = document.createElement("span");
-  dateParagraph.setAttribute("class", "date");
-  let blogParagraph = document.createElement("p");
-  let blogType = document.createElement("a");
-  blogType.setAttribute("class", "hash-tag");
-  let button = document.createElement("a");
-  button.setAttribute("href", "read-blog.html#/");
-  button.setAttribute("class", "to-read-full-blog");
-  button.innerHTML = "read more";
+      //
+      let childDiv = document.createElement("div");
 
-  img.src = image;
-  h4.textContent = title;
-  authorParagraph.textContent = author;
-  dateParagraph.textContent = date;
-  blogParagraph.textContent = content;
-  blogType.textContent = hashTag;
+      //image
+      let img = document.createElement("img");
+      img.setAttribute("src", post.data.blog_img);
 
-  childDiv.appendChild(h4);
-  childDiv.appendChild(authorParagraph);
-  childDiv.appendChild(dateParagraph);
-  childDiv.appendChild(blogParagraph);
-  childDiv.appendChild(blogType);
-  childDiv.appendChild(button);
+      // blog title
+      let h4 = document.createElement("h4");
+      let h4Title = document.createTextNode(post.data.blog_title);
 
-  parentDiv.appendChild(img);
-  parentDiv.appendChild(childDiv);
+      h4.appendChild(h4Title);
 
-  postCollection.appendChild(parentDiv);
-}
+      // blog author
+      let authorParagraph = document.createElement("address");
+      authorParagraph.setAttribute("class", "author");
+      let authPrgrph = document.createTextNode("By " + post.data.blog_author);
 
-// Get posts
-function getPosts() {
-  db.collection("posts")
-    .get()
-    .then((snapshot) => {
-      snapshot.docs.forEach((docs) => {
-        loadPost(
-          docs.data().blog_img,
-          docs.data().blog_title,
-          docs.data().blog_author,
-          docs.data().blog_date,
-          docs.data().blog_subject,
-          docs.data().blog_tag
-        );
-      });
-    })
-    .catch((err) => {
-      console.log(err);
+      authorParagraph.appendChild(authPrgrph);
+
+      // blog date
+      let dateParagraph = document.createElement("span");
+      dateParagraph.setAttribute("class", "date");
+      let datePrgrph = document.createTextNode(post.data.blog_date);
+      dateParagraph.appendChild(datePrgrph);
+
+      // blog content
+      let blogParagraph = document.createElement("p");
+      let paragraphContent = document.createTextNode(post.data.blog_subject);
+      blogParagraph.appendChild(paragraphContent);
+
+      // blog tag
+      let blogType = document.createElement("a");
+      blogType.setAttribute("class", "hash-tag");
+      let blogTp = document.createTextNode(post.data.blog_tag);
+      blogType.appendChild(blogTp);
+
+      // link
+      let readBlogLink = document.createElement("a");
+      readBlogLink.innerHTML = "More";
+      readBlogLink.setAttribute("class", "to-read-full-blog");
+      readBlogLink.setAttribute("href", "read-blog.html#/" + post.id);
+
+      childDiv.appendChild(h4);
+      childDiv.appendChild(authorParagraph);
+      childDiv.appendChild(dateParagraph);
+      childDiv.appendChild(blogParagraph);
+      childDiv.appendChild(blogType);
+      childDiv.appendChild(readBlogLink);
+
+      parentDiv.appendChild(img);
+      parentDiv.appendChild(childDiv);
+
+      postCollection.appendChild(parentDiv);
     });
-}
+  }
+};
 
-getPosts();
+// check if the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", (e) => {
+  getPosts();
+  getPost();
+});
 
 // ===== previewing the blog image before upload =====
 function preview_image(event) {

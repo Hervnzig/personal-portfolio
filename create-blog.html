@@ -40,6 +40,7 @@
     <main class="form-container">
       <h2>Post your new blog</h2>
       <form method="POST" id="createFrom">
+        <p id="warning"></p>
         <div class="row">
           <div class="label-input-field">
             <label for="blog-title">Blog title</label>
@@ -90,7 +91,7 @@
             <label for="subject">Blog Image</label>
           </div>
           <div class="input-field">
-            <input id="blogImage" type="file" name="blog-image" onchange="preview_image(event)">
+            <input id="blogImage" class="upload-image" type="file" name="blog-image" onchange="preview_image(event)">
             <img id="output_image" />
           </div>
         </div>
@@ -101,6 +102,7 @@
       <div id="progressHandler">
         <p>Progress when uploading blog</p>
         <progress id="progressBar" value="" max="100"></progress>
+        <p id="progress_count"></p>
       </div>
 
     </main>
