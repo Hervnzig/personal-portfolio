@@ -30,12 +30,14 @@ if (createForm !== null) {
 
     if (
       document.getElementById("blogTitle").value !== "" &&
+      document.getElementById("blogAuthor").value !== "" &&
       document.getElementById("blogTag").value !== "" &&
       document.getElementById("blogSubject").value !== "blogSubject" &&
       document.getElementById("blogDate").value !== "" &&
       document.getElementById("blogImage").files[0] !== ""
     ) {
       let blog_title = document.getElementById("blogTitle").value;
+      let blog_author = document.getElementById("blogAuthor").value;
       let blog_tag = document.getElementById("blogTag").value;
       let blog_subject = document.getElementById("blogSubject").value;
       let blog_date = document.getElementById("blogDate").value;
@@ -82,6 +84,7 @@ if (createForm !== null) {
 
       let post = {
         blog_title: blog_title,
+        blog_author: blog_author,
         blog_tag: blog_tag,
         blog_subject: blog_subject,
         blog_img: d,
@@ -138,22 +141,22 @@ function loadPost(image, title, author, date, content, hashTag) {
   parentDiv.appendChild(img);
   parentDiv.appendChild(childDiv);
 
-  // postCollection.appendChild(parentDiv);
+  postCollection.appendChild(parentDiv);
 }
 
 // Get posts
 function getPosts() {
-  db.collection("blogs")
+  db.collection("posts")
     .get()
     .then((snapshot) => {
       snapshot.docs.forEach((docs) => {
         loadPost(
-          docs.data().blogImage,
-          docs.data().blogTitle,
-          docs.data().blogAuthor,
-          docs.data().blogDate,
-          docs.data().blogContent,
-          docs.data().blogType
+          docs.data().blog_img,
+          docs.data().blog_title,
+          docs.data().blog_author,
+          docs.data().blog_date,
+          docs.data().blog_subject,
+          docs.data().blog_tag
         );
       });
     })

@@ -42,7 +42,7 @@
       <form method="POST" id="createFrom">
         <div class="row">
           <div class="label-input-field">
-            <label for="fname">Blog title</label>
+            <label for="blog-title">Blog title</label>
           </div>
           <div class="input-field">
             <input type="text" id="blogTitle" name="title" placeholder="Title of the blog.." />
@@ -50,10 +50,18 @@
         </div>
         <div class="row">
           <div class="label-input-field">
+            <label for="author-names">Author name</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="blogAuthor" name="name" placeholder="Type in your names" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="label-input-field">
             <label for="profession">Category</label>
           </div>
           <div class="input-field">
-            <input type="text" id="blogTag" name="title" placeholder="Start with #tag" />
+            <input type="text" id="blogTag" name="tag" placeholder="Start with #tag" />
             <!-- <select id="profession" name="profession">
               <option value="mobiledev">Mobile app dev</option>
               <option value="websitedev">Web dev</option>
@@ -74,7 +82,7 @@
         <div class="row">
           <label for="date" class="label-input-field">Date</label>
           <div class="input-field">
-            <input type="date" id="blogDate" class="date-block">
+            <input type="date" name="blog-date" id="blogDate" class="date-block">
           </div>
         </div>
         <div class="row">
@@ -82,7 +90,7 @@
             <label for="subject">Blog Image</label>
           </div>
           <div class="input-field">
-            <input id="blogImage" type="file" onchange="preview_image(event)">
+            <input id="blogImage" type="file" name="blog-image" onchange="preview_image(event)">
             <img id="output_image" />
           </div>
         </div>
