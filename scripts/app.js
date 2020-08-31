@@ -121,6 +121,7 @@ function loadPost(image, title, author, date, content, hashTag) {
   let blogType = document.createElement("a");
   blogType.setAttribute("class", "hash-tag");
   let button = document.createElement("a");
+  button.setAttribute("href", "read-blog.html#/");
   button.setAttribute("class", "to-read-full-blog");
   button.innerHTML = "read more";
 
