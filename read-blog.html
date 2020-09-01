@@ -38,41 +38,46 @@
   <section class="main-width-adjust">
     <h2>Let's Blog</h2>
     <div id="loading"></div>
-    <div id="post" class="full-blog"></div>
-    <!-- <div class="full-blog">
-      <h4>The importance of design</h4>
-      <div class="item-pic">
-        <img class="image-styling" src="./assets/blog_pic2.png" alt="blog1" />
+    <div id="read_post" class="full-blog"></div>
+
+    <div class="full-blog">
+      <div id="blog">
+        <!-- <h4>The importance of design</h4>
+        <img id="blog-read-image" class="image-styling" src="./assets/blog_pic2.png" alt="blog1" />
+        <div class="date-auth-blog">
+          <address id="blog-read-author">By Herve</address>
+          <small id="blog-read-date">01-08-2020</small>
+        </div>
+        <p>
+          When coronavirus-related stay-at-home orders were announced in the
+          United States this past March, their durations were largely
+          undetermined. But now, nearly four months later, as spikes of
+          infections are being seen again across several states, it has become
+          clear to the design world that changes to physical space must be made
+          in order to stop COVID-19’s spread. Some employers are retrofitting
+          close quarters with protective shields and hand sanitizing stations
+          while others are considering new ways to use their existing office
+          while staying socially distanced. For office workspaces in progress,
+          some have begun asking their designers to revamp plans to accommodate
+          distancing and safe collaborative work. Considering the current global
+          health crisis, what is the future of workplace design? Three
+          architects weigh in on how offices can remain safe after employees
+          return to work.. When coronavirus-related stay-at-home orders were
+          announced in the United States this past March, their durations were
+          largely undetermined. But now, nearly four months later, as spikes of
+          infections are being seen again across several states, it has become
+          clear to the design world that changes to physical space must be made
+          in order to stop COVID-19’s spread. Some employers are retrofitting
+          close quarters with protective shields and hand sanitizing stations
+          while others are considering new ways to use their existing office
+          while staying socially distanced. For office workspaces in progress,
+          some have begun asking their designers to revamp plans to accommodate
+          distancing and safe collaborative work. Considering the current global
+          health crisis, what is the future of workplace design? Three
+          architects weigh in on how offices can remain safe after employees
+          return to work.
+        </p> -->
       </div>
-      <p>
-        When coronavirus-related stay-at-home orders were announced in the
-        United States this past March, their durations were largely
-        undetermined. But now, nearly four months later, as spikes of
-        infections are being seen again across several states, it has become
-        clear to the design world that changes to physical space must be made
-        in order to stop COVID-19’s spread. Some employers are retrofitting
-        close quarters with protective shields and hand sanitizing stations
-        while others are considering new ways to use their existing office
-        while staying socially distanced. For office workspaces in progress,
-        some have begun asking their designers to revamp plans to accommodate
-        distancing and safe collaborative work. Considering the current global
-        health crisis, what is the future of workplace design? Three
-        architects weigh in on how offices can remain safe after employees
-        return to work.. When coronavirus-related stay-at-home orders were
-        announced in the United States this past March, their durations were
-        largely undetermined. But now, nearly four months later, as spikes of
-        infections are being seen again across several states, it has become
-        clear to the design world that changes to physical space must be made
-        in order to stop COVID-19’s spread. Some employers are retrofitting
-        close quarters with protective shields and hand sanitizing stations
-        while others are considering new ways to use their existing office
-        while staying socially distanced. For office workspaces in progress,
-        some have begun asking their designers to revamp plans to accommodate
-        distancing and safe collaborative work. Considering the current global
-        health crisis, what is the future of workplace design? Three
-        architects weigh in on how offices can remain safe after employees
-        return to work.
-      </p>
       <hr />
       <section>
         <button>Drop a comment</button>
@@ -88,7 +93,7 @@
           <button>Reply</button>
         </div>
       </section>
-    </div> -->
+    </div>
     <div>
       <a class="more-blogs" href="./blog-page.html">Explore more blogs</a>
     </div>
@@ -142,6 +147,12 @@
       </section>
     </section>
   </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+  <script src="./scripts/app.js"></script>
 </body>
 
 </html>

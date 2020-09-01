@@ -14,7 +14,6 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 // Variables
-// const firestore = firebase.firestore();
 
 const db = firebase.firestore();
 const postCollection = document.querySelector("#posts_collection");
@@ -24,6 +23,8 @@ const progressHandler = document.querySelector("#progressHandler");
 const postSubmit = document.querySelector("#postSubmit");
 const progressCount = document.querySelector("#progress_count");
 const warningForm = document.querySelector("#warning");
+const loading = document.querySelector("#loading");
+const readBlog = document.querySelector("#read_post");
 
 const getPosts = async () => {
   let postsArray = [];
@@ -42,9 +43,67 @@ const getPosts = async () => {
 };
 
 const getPost = async () => {
+  // console.log(db);
+
   let postId = getPostIdFromURL();
+  if (loading !== null) {
+    loading.innerHTML = "<p>Loading post..</p>";
+  }
+  let post = await firebase
+    .firestore()
+    .collection("posts")
+    .doc(postId)
+    .get()
+    .catch((err) => console.log(err));
+  if (loading !== null) {
+    loading.innerHTML = "";
+  }
+  if (post !== null) {
+    console.log(post.data());
+  }
+
+  let blogData = post.data();
+
+  createChild(blogData);
 };
 
+const createChild = (postData) => {
+  if (readBlog !== null) {
+    console.log(postData);
+    let parentBlogDiv = document.createElement("div");
+    let div = document.createElement("div");
+    div.setAttribute("class", "date-auth-blog");
+
+    let title = document.createElement("h4");
+    let titleNode = document.createTextNode(postData.blog_title);
+    title.appendChild(titleNode);
+
+    let img = document.createElement("img");
+    img.setAttribute("src", postData.blog_img);
+
+    let author = document.createElement("address");
+    let authorNode = document.createTextNode(postData.blog_author);
+    author.appendChild(authorNode);
+
+    let blogDate = document.createElement("small");
+    let blogDateNode = document.createTextNode(postData.blog_date);
+    blogDate.appendChild(blogDateNode);
+
+    let blogContent = document.createElement("p");
+    let blogContentNode = document.createTextNode(postData.blog_subject);
+    blogContent.appendChild(blogContentNode);
+
+    div.appendChild(author);
+    div.appendChild(blogDate);
+
+    parentBlogDiv.appendChild(title);
+    parentBlogDiv.appendChild(img);
+    parentBlogDiv.appendChild(div);
+    parentBlogDiv.appendChild(blogContent);
+
+    post.appendChild(parentBlogDiv);
+  }
+};
 // display read blog page
 const getPostIdFromURL = () => {
   let postLocation = window.location.href;
@@ -54,7 +113,7 @@ const getPostIdFromURL = () => {
   return postId;
 };
 
-// Create new Post and upload
+// ===== Create new Post and upload =====
 if (createForm !== null) {
   let d;
   createForm.addEventListener("submit", async (e) => {
@@ -147,6 +206,8 @@ const createChildren = (arr) => {
 
       //
       let childDiv = document.createElement("div");
+      let linkSection = document.createElement("section");
+      linkSection.setAttribute("class", "blog-link-block");
 
       //image
       let img = document.createElement("img");
@@ -187,13 +248,14 @@ const createChildren = (arr) => {
       readBlogLink.innerHTML = "More";
       readBlogLink.setAttribute("class", "to-read-full-blog");
       readBlogLink.setAttribute("href", "read-blog.html#/" + post.id);
+      linkSection.appendChild(readBlogLink);
 
       childDiv.appendChild(h4);
       childDiv.appendChild(authorParagraph);
       childDiv.appendChild(dateParagraph);
       childDiv.appendChild(blogParagraph);
       childDiv.appendChild(blogType);
-      childDiv.appendChild(readBlogLink);
+      childDiv.appendChild(linkSection);
 
       parentDiv.appendChild(img);
       parentDiv.appendChild(childDiv);

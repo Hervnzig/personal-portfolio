@@ -550,8 +550,13 @@ h2 {
 /* === Client Blogs-list page === */
 .blog-item {
     display: flex;
-    margin: 1em 0;
+    margin: 2em;
     flex: 1;
+}
+
+.blog-link-block {
+    display: inline-block;
+    width: 100%;
 }
 
 .blog-item .date {
@@ -574,6 +579,7 @@ h2 {
 
 .blog-item div {
     background: white;
+    height: fit-content;
     margin: 10px 10px 10px -20px;
     padding: 10px;
     width: 45%;
@@ -615,6 +621,8 @@ h2 {
 @media screen and (max-width: 768px) {
     .blog-item {
         display: block;
+        margin: 1em;
+        padding: 1em;
     }
 
     .blog-item img {
@@ -668,8 +676,24 @@ h2 {
 
 /* read blog page */
 .full-blog {
-    margin: 10px;
+    margin: 10px auto;
     padding: 10px;
+}
+
+.date-auth-blog {
+    padding: 12px 5px;
+}
+
+.date-auth-blog address {
+    float: left;
+}
+
+.date-auth-blog small {
+    float: right;
+}
+
+.full-blog img {
+    width: 100%;
 }
 
 h4 {
