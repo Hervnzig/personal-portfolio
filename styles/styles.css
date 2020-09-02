@@ -6,6 +6,7 @@ body {
     padding: 0;
     color: #373636;
     font-size: 13px;
+    background: #edecf3;
 }
 
 @media screen and (min-width: 1024px) {
@@ -147,6 +148,7 @@ a {
     background-position: right;
     background-size: cover;
     text-align: right;
+    border: 2px solid #f5f3f3;
 }
 
 .intro-homepage ul {
@@ -236,8 +238,8 @@ nav {
 }
 
 .nav>.nav-links {
-    display: inline-block;
     float: right;
+    padding-top: 7px;
 }
 
 .nav>.nav-links>a {
@@ -548,10 +550,23 @@ h2 {
 }
 
 /* === Client Blogs-list page === */
+.pagination-button {
+    border: 1px solid #ccc !important;
+    padding: 12px 20px;
+    margin: 0 2em;
+    width: fit-content;
+    text-align: center;
+}
+
 .blog-item {
     display: flex;
-    margin: 1em 0;
+    padding: 2em;
     flex: 1;
+}
+
+.blog-link-block {
+    display: inline-block;
+    width: 100%;
 }
 
 .blog-item .date {
@@ -574,6 +589,7 @@ h2 {
 
 .blog-item div {
     background: white;
+    height: fit-content;
     margin: 10px 10px 10px -20px;
     padding: 10px;
     width: 45%;
@@ -615,6 +631,7 @@ h2 {
 @media screen and (max-width: 768px) {
     .blog-item {
         display: block;
+        padding: 1em;
     }
 
     .blog-item img {
@@ -667,9 +684,35 @@ h2 {
 }
 
 /* read blog page */
+.loading-msg {
+    font-size: 23px;
+    padding: 5em;
+    color: #33383b;
+    margin: 0;
+    text-align: center;
+    display: block;
+}
+
+
 .full-blog {
-    margin: 10px;
+    margin: 10px auto;
     padding: 10px;
+}
+
+.date-auth-blog {
+    padding: 12px 5px;
+}
+
+.date-auth-blog address {
+    float: left;
+}
+
+.date-auth-blog small {
+    float: right;
+}
+
+.full-blog img {
+    width: 100%;
 }
 
 h4 {
@@ -730,7 +773,7 @@ hr {
     width: 100%;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
