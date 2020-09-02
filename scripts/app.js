@@ -1,5 +1,4 @@
-// Your web app's Firebase configuration
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyDA46t6qsRN4NQE8KbZPYhlndI2yovrOzo",
   authDomain: "web-portfolio-blog.firebaseapp.com",
   databaseURL: "https://web-portfolio-blog.firebaseio.com",
@@ -9,13 +8,12 @@ var firebaseConfig = {
   appId: "1:782884425067:web:8f8fc3eec7d76752e4502e",
   measurementId: "G-SGLTSJ1ZPH",
 };
-// Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-// Variables
-
 const db = firebase.firestore();
+
 const postCollection = document.querySelector("#posts_collection");
 const createForm = document.querySelector("#createFrom");
 const progressBar = document.querySelector("#progressBar");
@@ -25,29 +23,151 @@ const progressCount = document.querySelector("#progress_count");
 const warningForm = document.querySelector("#warning");
 const loading = document.querySelector("#loading");
 const readBlog = document.querySelector("#read_post");
+const pagination = document.querySelector("#pagination");
+
+let editMode = false;
+
+let currentPostId;
+let currentPostImage;
+let currentPostTitle;
+let currentPostAuthor;
+let currentPostDate;
+let currentPostContent;
+let currentPostTag;
+
+let lastVisible;
+
+let postsArray = [];
+let size;
+let postsSize;
 
 const getPosts = async () => {
-  let postsArray = [];
-  let docs = await firebase
+  let docs;
+  let postsRef = firebase
     .firestore()
     .collection("posts")
-    .get()
-    .catch((err) => {
-      console.log(err);
-    });
-  docs.forEach((doc) => {
+    .orderBy("blog_date")
+    .limit(3);
+
+  let _size = await firebase.firestore().collection("posts").get();
+  size = _size.size;
+
+  await postsRef.get().then((documentSnapshots) => {
+    docs = documentSnapshots;
+
+    lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+    console.log("last", lastVisible);
+  });
+
+  docs["docs"].forEach((doc) => {
     postsArray.push({ id: doc.id, data: doc.data() });
   });
 
-  createChildren(postsArray);
+  if (postsArray.length > 0) {
+    pagination.style.display = "block";
+  } else {
+    pagination.style.display = "none";
+  }
+
+  await createChildren(postsArray);
+  postsSize = postCollection.childNodes.length;
+  console.log(postsSize);
 };
 
-const getPost = async () => {
-  // console.log(db);
+const paginate = async () => {
+  pagination.addEventListener("click", () => {
+    paginate();
+  });
+  let docs;
+  let postsRef = firebase
+    .firestore()
+    .collection("posts")
+    .orderBy("blog_date")
+    .startAfter(lastVisible)
+    .limit(3);
 
+  await postsRef.get().then((documentSnapshots) => {
+    docs = documentSnapshots;
+
+    lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+    console.log("last", lastVisible);
+  });
+
+  docs["docs"].forEach((doc, i) => {
+    let div = document.createElement("div");
+    div.setAttribute("class", "blog-item");
+
+    let div1 = document.createElement("div");
+    let anchorSection = document.createElement("section");
+    anchorSection.setAttribute("class", "blog-link-block");
+
+    let imageSection = document.createElement("img");
+    imageSection.setAttribute("src", doc.data().blog_img);
+
+    // blog title
+    let tile = document.createElement("h4");
+    let h4Title = document.createTextNode(doc.data().blog_title);
+    tile.appendChild(h4Title);
+
+    // blog author
+    let authorblock = document.createElement("address");
+    authorblock.setAttribute("class", "author");
+    let authElement = document.createTextNode("By " + doc.data().blog_author);
+    authorblock.appendChild(authElement);
+
+    // blog date
+    let dateBlock = document.createElement("span");
+    dateBlock.setAttribute("class", "date");
+    let dateElement = document.createTextNode(doc.data().blog_date);
+    dateBlock.appendChild(dateElement);
+
+    // blog content
+    let blogBlock = document.createElement("p");
+    let contentElement = document.createTextNode(doc.data().blog_subject);
+    blogBlock.appendChild(contentElement);
+
+    // blog tag
+    let blogTypeBlock = document.createElement("a");
+    blogTypeBlock.setAttribute("class", "hash-tag");
+    let blogTpElement = document.createTextNode(doc.data().blog_tag);
+    blogTypeBlock.appendChild(blogTpElement);
+
+    let goToFullBlog = document.createElement("a");
+    goToFullBlog.innerHTML = "More";
+    goToFullBlog.setAttribute("class", "to-read-full-blog");
+    goToFullBlog.setAttribute("href", "read-blog.html#/" + doc.id);
+    anchorSection.appendChild(goToFullBlog);
+
+    div1.appendChild(tile);
+    div1.appendChild(authorblock);
+    div1.appendChild(dateBlock);
+    div1.appendChild(blogBlock);
+    div1.appendChild(blogTypeBlock);
+    div1.appendChild(anchorSection);
+
+    div.appendChild(imageSection);
+    div.appendChild(div1);
+
+    postCollection.appendChild(div);
+    postsSize++;
+    console.log(postsSize);
+  });
+
+  if (postsSize >= size) {
+    pagination.style.display = "none";
+  }
+};
+
+if (pagination != null) {
+  pagination.addEventListener("click", () => {
+    paginate();
+  });
+}
+
+const getPost = async () => {
   let postId = getPostIdFromURL();
   if (loading !== null) {
-    loading.innerHTML = "<p>Loading post..</p>";
+    loading.innerHTML = "<strong class ='loading-msg'>loading..</strong>";
   }
   let post = await firebase
     .firestore()
@@ -55,55 +175,61 @@ const getPost = async () => {
     .doc(postId)
     .get()
     .catch((err) => console.log(err));
+
+  currentPostId = post.id;
+  currentPostImage = post.data().blog_img;
+  currentPostTitle = post.data().blog_title;
+  currentPostAuthor = post.data().blog_author;
+  currentPostDate = post.data().blog_date;
+  currentPostContent = post.data().blog_subject;
+  currentPostTag = post.data().blog_tag;
+
   if (loading !== null) {
     loading.innerHTML = "";
   }
-  if (post !== null) {
-    console.log(post.data());
-  }
 
-  let blogData = post.data();
+  let div = document.createElement("div");
+  let AuthDateDiv = document.createElement("div");
+  AuthDateDiv.setAttribute("class", "date-auth-blog");
 
-  createChild(blogData);
+  let img = document.createElement("img");
+  img.setAttribute("src", post.data().blog_img);
+  img.setAttribute("loading", "lazy");
+
+  let blgTitle = document.createElement("h4");
+  let blgTileNode = document.createTextNode(post.data().blog_title);
+  blgTitle.appendChild(blgTileNode);
+
+  let blgAuthor = document.createElement("address");
+  blgAuthor.setAttribute("class", "date-auth-blog address");
+  let blgAuthNode = document.createTextNode(post.data().blog_author);
+  blgAuthor.appendChild(blgAuthNode);
+
+  let blgDate = document.createElement("small");
+  blgDate.setAttribute("class", "date-auth-blog small");
+  let blgDateNode = document.createTextNode(post.data().blog_date);
+  blgDate.appendChild(blgDateNode);
+
+  let blgContent = document.createElement("p");
+  let blgContentNode = document.createTextNode(post.data().blog_subject);
+  blgContent.appendChild(blgContentNode);
+
+  let blgTag = document.createElement("p");
+  let blgTagNode = document.createTextNode(post.data().blog_tag);
+  blgTag.appendChild(blgTagNode);
+
+  AuthDateDiv.appendChild(blgAuthor);
+  AuthDateDiv.appendChild(blgDate);
+
+  div.appendChild(blgTitle);
+  div.appendChild(img);
+  div.appendChild(AuthDateDiv);
+  div.appendChild(blgContent);
+  div.appendChild(blgTag);
+
+  readBlog.appendChild(div);
 };
 
-const createChild = (postData) => {
-  if (readBlog !== null) {
-    console.log(postData);
-    let parentBlogDiv = document.createElement("div");
-    let div = document.createElement("div");
-    div.setAttribute("class", "date-auth-blog");
-
-    let title = document.createElement("h4");
-    let titleNode = document.createTextNode(postData.blog_title);
-    title.appendChild(titleNode);
-
-    let img = document.createElement("img");
-    img.setAttribute("src", postData.blog_img);
-
-    let author = document.createElement("address");
-    let authorNode = document.createTextNode(postData.blog_author);
-    author.appendChild(authorNode);
-
-    let blogDate = document.createElement("small");
-    let blogDateNode = document.createTextNode(postData.blog_date);
-    blogDate.appendChild(blogDateNode);
-
-    let blogContent = document.createElement("p");
-    let blogContentNode = document.createTextNode(postData.blog_subject);
-    blogContent.appendChild(blogContentNode);
-
-    div.appendChild(author);
-    div.appendChild(blogDate);
-
-    parentBlogDiv.appendChild(title);
-    parentBlogDiv.appendChild(img);
-    parentBlogDiv.appendChild(div);
-    parentBlogDiv.appendChild(blogContent);
-
-    post.appendChild(parentBlogDiv);
-  }
-};
 // display read blog page
 const getPostIdFromURL = () => {
   let postLocation = window.location.href;
@@ -123,7 +249,7 @@ if (createForm !== null) {
       document.getElementById("blogTitle").value !== "" &&
       document.getElementById("blogAuthor").value !== "" &&
       document.getElementById("blogTag").value !== "" &&
-      document.getElementById("blogSubject").value !== "blogSubject" &&
+      document.getElementById("blogSubject").value !== "" &&
       document.getElementById("blogDate").value !== "" &&
       document.getElementById("blogImage").files[0] !== ""
     ) {
@@ -138,6 +264,7 @@ if (createForm !== null) {
 
       const storageRef = firebase.storage().ref();
       const storageChild = storageRef.child(blog_img.name);
+
       console.log("uploading file ..");
       const postBlogImage = storageChild.put(blog_img);
 
@@ -149,13 +276,13 @@ if (createForm !== null) {
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             progressCount.innerHTML = "Progress " + Math.trunc(progress) + " %";
 
-            if (progressHandler !== null) {
+            if (progressHandler != null) {
               progressHandler.style.display = true;
             }
-            if (postSubmit !== null) {
+            if (postSubmit != null) {
               postSubmit.disabled = true;
             }
-            if (progressBar !== null) {
+            if (progressBar != null) {
               progressBar.value = progress;
             }
           },
@@ -186,7 +313,7 @@ if (createForm !== null) {
       await firebase.firestore().collection("posts").add(post);
       console.log("post added successfully");
 
-      if (postSubmit !== null) {
+      if (postSubmit != null) {
         window.location.replace("blog-page.html");
         postSubmit.disabled = false;
       } else {
@@ -268,7 +395,12 @@ const createChildren = (arr) => {
 // check if the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", (e) => {
   getPosts();
-  getPost();
+  if (
+    !location.href.includes("blog-page.html") &&
+    !location.href.includes("create-blog.html")
+  ) {
+    getPost();
+  }
 });
 
 // ===== previewing the blog image before upload =====
