@@ -9,28 +9,31 @@
 </head>
 
 <body>
-  <nav>
+  <nav class="nav-container">
     <div class="nav main-width-adjust">
-      <div class="nav-header">
-        <div class="nav-title">
-          <h1><a href="./index.html">Herve.</a></h1>
+      <div class="nav-logo">
+        <a href="#">
+          <h1>Herve.</h1>
+        </a>
+      </div>
+      <div class="navbar">
+        <div class="icon-bar" onclick="Show()">
+          <i></i>
+          <i></i>
+          <i></i>
         </div>
-      </div>
-      <div class="nav-btn">
-        <label for="nav-check">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
-      </div>
-      <input type="checkbox" id="nav-check" />
-      <div class="nav-links">
-        <a href="./about.html">About</a>
-        <a href="./projects.html">My Projects</a>
-        <a href="./blog-page.html">Blog</a>
-        <a href="./resume.html">Resume</a>
-        <a href="./contact.html">Contact Me</a>
-        <a href="#">Connect</a>
+        <ul class="nav-lists" id="nav-lists">
+          <li class="close"><span onclick="Hide()">×</span></li>
+          <li id="logged-in"><a href="./about.html">About</a></li>
+          <li id="logged-in"><a href="./projects.html">Projects</a></li>
+          <li id="logged-in"><a href="./blog-page.html">Blogs</a></li>
+          <li id="logged-in"><a href="./resume.html">Resume</a></li>
+          <li id="logged-in"><a href="./contact.html">Contact</a></li>
+          <li id="logged-in"><a href="#">Account</a></li>
+          <li id="logged-in"><a href="#">logout</a></li>
+          <li id="logged-out"><a href="#">signUp</a></li>
+          <li id="logged-out"><a href="#">Login</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -105,6 +108,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
   <script src="./scripts/app.js"></script>
+  <script src="./scripts/uiscripts.js"></script>
 </body>
 
 </html>
