@@ -9,28 +9,31 @@
 </head>
 
 <body>
-  <nav>
+  <nav class="nav-container">
     <div class="nav main-width-adjust">
-      <div class="nav-header">
-        <div class="nav-title">
-          <h1><a href="./index.html">Herve.</a></h1>
+      <div class="nav-logo">
+        <a href="#">
+          <h1>Herve.</h1>
+        </a>
+      </div>
+      <div class="navbar">
+        <div class="icon-bar" onclick="Show()">
+          <i></i>
+          <i></i>
+          <i></i>
         </div>
-      </div>
-      <div class="nav-btn">
-        <label for="nav-check">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
-      </div>
-      <input type="checkbox" id="nav-check" />
-      <div class="nav-links">
-        <a href="./about.html">About</a>
-        <a href="./projects.html">My Projects</a>
-        <a href="./blog-page.html">Blog</a>
-        <a href="./resume.html">Resume</a>
-        <a href="./contact.html">Contact Me</a>
-        <a href="#">Connect</a>
+        <ul class="nav-lists" id="nav-lists">
+          <li class="close"><span onclick="Hide()">×</span></li>
+          <li id="logged-in"><a href="./about.html">About</a></li>
+          <li id="logged-in"><a href="./projects.html">Projects</a></li>
+          <li id="logged-in"><a href="./blog-page.html">Blogs</a></li>
+          <li id="logged-in"><a href="./resume.html">Resume</a></li>
+          <li id="logged-in"><a href="./contact.html">Contact</a></li>
+          <li id="logged-in"><a href="#">Account</a></li>
+          <li id="logged-in"><a href="#">logout</a></li>
+          <li id="logged-out"><a href="#">signUp</a></li>
+          <li id="logged-out"><a href="#">Login</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -39,7 +42,7 @@
     <h2>Here are your created blogs</h2>
     <a href="./create-blog.html" class="to-new-blog">Write new blog</a>
     <div class="blog-container-dash">
-      <img class="item-pic image-styling" src="./assets/blog_pic2.png" />
+      <img class="dash_img image-styling" src="./assets/blog_pic2.png" />
       <div class="blog-description-dash">
         <h3>blog title</h3>
         <p>
@@ -52,7 +55,7 @@
       </div>
     </div>
     <div class="blog-container-dash">
-      <img class="item-pic image-styling" src="./assets/blog_pic1.png" />
+      <img class="dash_img image-styling" src="./assets/blog_pic1.png" />
       <div class="blog-description-dash">
         <h3>Artificial intelligence</h3>
         <p>
@@ -66,7 +69,7 @@
       </div>
     </div>
     <div class="blog-container-dash">
-      <img class="item-pic image-styling" src="./assets/dribble_red_4x.png" />
+      <img class="dash_img image-styling" src="./assets/dribble_red_4x.png" />
       <div class="blog-description-dash">
         <h3>IoT</h3>
         <p>
@@ -81,7 +84,7 @@
         <button>Edit</button> <button>Delete</button>
       </div>
     </div>
-    <ul class="pagination">
+    <!-- <ul class="pagination">
       <li><a href="page-nbr">&laquo;</a></li>
       <li><a href="#">1</a></li>
       <li><a href="#">2</a></li>
@@ -90,8 +93,10 @@
       <li><a href="#">5</a></li>
       <li><a href="#">6</a></li>
       <li><a href="#">&raquo;</a></li>
-    </ul>
+    </ul> -->
   </section>
+
+  <script src="./scripts/uiscripts.js"></script>
 </body>
 
 </html>
