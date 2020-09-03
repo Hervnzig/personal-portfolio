@@ -284,6 +284,7 @@ ul li {
     .nav-container .navbar ._Menus-show {
         left: 0;
         z-index: 9;
+        position: fixed;
     }
 }
 
