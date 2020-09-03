@@ -4,47 +4,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="styles/styles.css" rel="stylesheet" />
+  <link href="./styles/styles.css" rel="stylesheet" />
   <title>Write a new blog</title>
 </head>
 
 <body>
-  <nav>
+  <nav class="nav-container">
     <div class="nav main-width-adjust">
-      <div class="nav-header">
-        <div class="nav-title">
-          <h1><a href="#">Herve.</a></h1>
+      <div class="nav-logo">
+        <a href="#">
+          <h1>Herve.</h1>
+        </a>
+      </div>
+      <div class="navbar">
+        <div class="icon-bar" onclick="Show()">
+          <i></i>
+          <i></i>
+          <i></i>
         </div>
-      </div>
-      <div class="nav-btn">
-        <label for="nav-check">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
-      </div>
-      <input type="checkbox" id="nav-check" />
-      <div class="nav-links">
-        <a href="./about.html">About</a>
-        <a href="./projects.html">My Projects</a>
-        <a href="./blog-page.html">Blog</a>
-        <a href="./resume.html">Resume</a>
-        <a href="./contact.html">Contact Me</a>
-        <a href="#">Connect</a>
+        <ul class="nav-lists" id="nav-lists">
+          <li class="close"><span onclick="Hide()">×</span></li>
+          <li id="logged-in"><a href="./about.html">About</a></li>
+          <li id="logged-in"><a href="./projects.html">Projects</a></li>
+          <li id="logged-in"><a href="./blog-page.html">Blogs</a></li>
+          <li id="logged-in"><a href="./resume.html">Resume</a></li>
+          <li id="logged-in"><a href="./contact.html">Contact</a></li>
+          <li id="logged-in"><a href="#">Account</a></li>
+          <li id="logged-in"><a href="#">logout</a></li>
+          <li id="logged-out"><a href="#">signUp</a></li>
+          <li id="logged-out"><a href="#">Login</a></li>
+        </ul>
       </div>
     </div>
   </nav>
 
   <section class="main-width-adjust">
+
     <h2>Post your new blog</h2>
-    <div class="form-container">
-      <form action="./blogs_dash.html">
+    <main class="form-container">
+      <form method="POST" id="createFrom">
+        <p id="warning"></p>
         <div class="row">
           <div class="label-input-field">
-            <label for="fname">Blog title</label>
+            <label for="blog-title">Blog title</label>
           </div>
           <div class="input-field">
-            <input type="text" id="blgtitle" name="title" placeholder="Title of the blog.." />
+            <input type="text" id="blogTitle" name="title" placeholder="Title of the blog.." />
+          </div>
+        </div>
+        <div class="row">
+          <div class="label-input-field">
+            <label for="author-names">Author name</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="blogAuthor" name="name" placeholder="Type in your names" />
           </div>
         </div>
         <div class="row">
@@ -52,12 +65,13 @@
             <label for="profession">Category</label>
           </div>
           <div class="input-field">
-            <select id="profession" name="profession">
+            <input type="text" id="blogTag" name="tag" placeholder="Start with #tag" />
+            <!-- <select id="profession" name="profession">
               <option value="mobiledev">Mobile app dev</option>
               <option value="websitedev">Web dev</option>
               <option value="design">Design</option>
               <option value="iot">IoT</option>
-            </select>
+            </select> -->
           </div>
         </div>
         <div class="row">
@@ -65,16 +79,46 @@
             <label for="subject">Body</label>
           </div>
           <div class="input-field">
-            <textarea id="subject" class="body-content" name="subject" placeholder="Begin your blog here.."></textarea>
+            <textarea id="blogSubject" class="body-content" name="subject"
+              placeholder="Begin your blog here.."></textarea>
           </div>
         </div>
         <div class="row">
-          <input type="submit" value="Save" />
+          <label for="date" class="label-input-field">Date</label>
+          <div class="input-field">
+            <input type="date" name="blog-date" id="blogDate" class="date-block">
+          </div>
+        </div>
+        <div class="row">
+          <div class="label-input-field">
+            <label for="subject">Blog Image</label>
+          </div>
+          <div class="input-field">
+            <input id="blogImage" class="upload-image" type="file" name="blog-image" onchange="preview_image(event)">
+            <img id="output_image" />
+          </div>
+        </div>
+        <div class="row">
+          <input id="postSubmit" type="submit" value="Save" />
         </div>
       </form>
-    </div>
+      <div id="progressHandler">
+        <p>Progress when uploading blog</p>
+        <progress id="progressBar" value="" max="100"></progress>
+        <p id="progress_count"></p>
+      </div>
+
+    </main>
     <h4><a href="./blogs_dash.html">Blogs dashboard</a></h4>
   </section>
+
+
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+  <script src="./scripts/app.js"></script>
+  <script src="./scripts/uiscripts.js"></script>
 </body>
 
 </html>

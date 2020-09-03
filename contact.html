@@ -4,50 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles/styles.css" rel="stylesheet" />
+    <link href="./styles/styles.css" rel="stylesheet" />
     <title>Let's talk</title>
 </head>
 
 <body>
     <section>
-        <nav>
+        <nav class="nav-container">
             <div class="nav main-width-adjust">
-                <div class="nav-header">
-                    <div class="nav-title">
-                        <h1><a href="#">Herve.</a></h1>
+                <div class="nav-logo">
+                    <a href="#">
+                        <h1>Herve.</h1>
+                    </a>
+                </div>
+                <div class="navbar">
+                    <div class="icon-bar" onclick="Show()">
+                        <i></i>
+                        <i></i>
+                        <i></i>
                     </div>
-                </div>
-                <div class="nav-btn">
-                    <label for="nav-check">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </label>
-                </div>
-                <input type="checkbox" id="nav-check" />
-                <div class="nav-links">
-                    <a href="./about.html">About</a>
-                    <a href="./projects.html">My Projects</a>
-                    <a href="./blog-page.html">Blog</a>
-                    <a href="./resume.html">Resume</a>
-                    <a href="./contact.html">Contact Me</a>
-                    <a href="#">Connect</a>
+                    <ul class="nav-lists" id="nav-lists">
+                        <li class="close"><span onclick="Hide()">×</span></li>
+                        <li id="logged-in"><a href="./about.html">About</a></li>
+                        <li id="logged-in"><a href="./projects.html">Projects</a></li>
+                        <li id="logged-in"><a href="./blog-page.html">Blogs</a></li>
+                        <li id="logged-in"><a href="./resume.html">Resume</a></li>
+                        <li id="logged-in"><a href="./contact.html">Contact</a></li>
+                        <li id="logged-in"><a href="#">Account</a></li>
+                        <li id="logged-in"><a href="#">logout</a></li>
+                        <li id="logged-out"><a href="#">signUp</a></li>
+                        <li id="logged-out"><a href="#">Login</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
 
-        <section class="main-container adjuster main-width-adjust">
-            <h2>Me in a Summary</h2>
-            <div class="about-main">
-                <p>Umuhango w'ihererekanyabubasha hagati y'Ubuyobozi bwa
-                    @RBCRwanda
-                    n'ubuyobozi bwa sosiyete nshya yitwa Rwanda Medical Supply ishinzwe kugura, kubika no kugeza imiti
-                    ku baturarwanda wabaye ku wa 21.08.2020 uyobowe n'Umunyamabanga Uhoraho muri
-                    @RwandaHealth
-                    Bwana Zacharie Iyakaremye</p>
+        <section class="main-width-adjust">
+            <h2>Write to me. I reply back after 5 hours</h2>
+            <div class="form-container">
+                <form action="./blogs_dash.html">
+                    <div class="row">
+                        <div class="label-input-field">
+                            <label for="fname">Title</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" id="blgtitle" name="title" placeholder="Title of the message.." />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="label-input-field">
+                            <label for="subject">Body</label>
+                        </div>
+                        <div class="input-field">
+                            <textarea id="subject" class="body-content" name="subject"
+                                placeholder="Type your message here.."></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="submit" value="Send" />
+                    </div>
+                </form>
             </div>
         </section>
     </section>
+
+    <script src="./scripts/uiscripts.js"></script>
 
 </body>
 

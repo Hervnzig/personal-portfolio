@@ -4,59 +4,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=About, initial-scale=1.0" />
-  <link href="styles/styles.css" rel="stylesheet" />
+  <link href="./styles/styles.css" rel="stylesheet" />
   <title>About Me</title>
 </head>
 
 <body>
-  <section class="">
-    <nav>
-      <div class="nav main-width-adjust">
-        <div class="nav-header">
-          <div class="nav-title">
-            <h1><a href="#">Herve.</a></h1>
-          </div>
-        </div>
-        <div class="nav-btn">
-          <label for="nav-check">
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-        </div>
-        <input type="checkbox" id="nav-check" />
-        <div class="nav-links">
-          <a href="./about.html">About</a>
-          <a href="./projects.html">My Projects</a>
-          <a href="./blog-page.html">Blog</a>
-          <a href="./resume.html">Resume</a>
-          <a href="./contact.html">Contact Me</a>
-          <a href="#">Connect</a>
-        </div>
+  <nav class="nav-container">
+    <div class="nav main-width-adjust">
+      <div class="nav-logo">
+        <a href="#">
+          <h1>Herve.</h1>
+        </a>
       </div>
-    </nav>
+      <div class="navbar">
+        <div class="icon-bar" onclick="Show()">
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+        <ul class="nav-lists" id="nav-lists">
+          <li class="close"><span onclick="Hide()">×</span></li>
+          <li id="logged-in"><a href="./about.html">About</a></li>
+          <li id="logged-in"><a href="./projects.html">Projects</a></li>
+          <li id="logged-in"><a href="./blog-page.html">Blogs</a></li>
+          <li id="logged-in"><a href="./resume.html">Resume</a></li>
+          <li id="logged-in"><a href="./contact.html">Contact</a></li>
+          <li id="logged-in"><a href="#">Account</a></li>
+          <li id="logged-in"><a href="#">logout</a></li>
+          <li id="logged-out"><a href="#">signUp</a></li>
+          <li id="logged-out"><a href="#">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <section class="main-container adjuster main-width-adjust">
-      <h2>Me in a Summary</h2>
-      <div class="about-main">
-        <img class="profile" src="./assets/Profile.PNG" />
-        <section class="about-me-desc">
-          <p>
-            A continuous learner highly motivated by trying new things and
-            innovating around them. A self starter with a growth mindset,
-            positive attitude, a team player, and able to adapt to change
-            quick and soft. Coding and debugging define much of my life but I
-            also cook and play basketball as my favorite hobbies.
-          </p>
-          <section class="about-connect">
-            <a href="#">Twitter</a>
-            <a href="#">Github</a>
-            <a href="#">Instagram</a>
-            <a href="#">Email</a>
-          </section>
+  <section class="main-container adjuster main-width-adjust">
+    <h2>Me in a Summary</h2>
+    <div class="about-main">
+      <img class="profile" src="./assets/Profile.PNG" />
+      <section class="about-me-desc">
+        <p>
+          A continuous learner highly motivated by trying new things and
+          innovating around them. A self starter with a growth mindset,
+          positive attitude, a team player, and able to adapt to change
+          quick and soft. Coding and debugging define much of my life but I
+          also cook and play basketball as my favorite hobbies.
+        </p>
+        <section class="about-connect">
+          <a href="#">Twitter</a>
+          <a href="#">Github</a>
+          <a href="#">Instagram</a>
+          <a href="#">Email</a>
         </section>
-      </div>
-    </section>
+      </section>
+    </div>
   </section>
 
   <footer class="footer-parent">
@@ -107,6 +108,8 @@
       </section>
     </section>
   </footer>
+
+  <script src="./scripts/uiscripts.js"></script>
 </body>
 
 </html>
