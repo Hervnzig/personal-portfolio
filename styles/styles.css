@@ -220,7 +220,7 @@ ul li {
 }
 
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 768px) {
     .nav-container {
         -webkit-box-pack: justify;
         -ms-flex-pack: justify;
@@ -646,10 +646,15 @@ h2 {
 .pagination-button {
     border: 1px solid #ccc !important;
     padding: 12px 20px;
-    margin: 0 2em;
+    margin: 20px 10px;
     width: fit-content;
     text-align: center;
     cursor: pointer;
+    background: #c9c8d0;
+}
+
+.pagination-button:hover {
+    background: #f2f1f7;
 }
 
 .blog-item {
@@ -795,14 +800,19 @@ h2 {
 
 .date-auth-blog {
     padding: 12px 5px;
+    width: 100%;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .date-auth-blog address {
-    float: left;
+    width: 50%;
 }
 
 .date-auth-blog small {
-    float: right;
+    width: 50%;
+    text-align: right;
 }
 
 .full-blog img {
@@ -832,10 +842,6 @@ h4 {
     width: 100% !important;
 }
 
-.full-blog button {
-    float: right;
-    padding: 10px;
-}
 
 hr {
     margin: 0;
@@ -952,44 +958,25 @@ input[type=submit]:hover {
 
 
 /* blogs dash */
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin: 2em;
-    padding: 0;
-}
-
-.pagination li {
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-}
-
-.pagination li.active {
-    background-color: #000;
-}
-
-.pagination li.active a {
-    color: white !important;
-}
-
-.pagination li:hover:not(.active) {
-    background-color: #ddd;
+#settings {
+    padding: 10px 20px;
+    border: 1px solid #cccccc;
+    color: #373636;
 }
 
 .blog-container-dash {
     display: flex;
-    background: #f5f5f7;
+    background: #f2f1f7;
     padding: 10px;
     margin: 20px 10px;
     align-items: center;
-    box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+    box-shadow: 0 4px 6px 0 rgb(32 33 36 / 19%);
+    border: 2px solid #cecdd4;
 }
 
 
 .blog-container-dash .blog-description-dash {
-    flex: 1.7;
-    margin: auto 10px;
+    margin: auto 15px;
 }
 
 .blog-description-dash p {
@@ -1029,4 +1016,107 @@ a.to-new-blog {
     text-decoration: underline;
     display: block;
     width: fit-content;
+}
+
+/* === blog dash settings */
+.dash-settings-content {
+    margin-top: 60px !important;
+    padding: 20px 0;
+}
+
+@media screen and (min-width: 1024px) {
+    .full-blog.blog-settings {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .full-blog.blog-settings {
+        display: inline-block;
+    }
+}
+
+.comment-block {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.comment-block div {
+    margin: 15px;
+}
+
+.danger {
+    padding: 12px 20px;
+    background: #f00;
+    color: white;
+    border: 1px solid red;
+    border-radius: 3px;
+    cursor: pointer;
+    float: right;
+    margin: 0px 20px 0 0;
+}
+
+.danger:hover {
+    background: #c00;
+}
+
+#editFormContainer {
+    border-radius: 5px;
+    background-color: #f5f5f7;
+    padding: 20px;
+    margin: 20px 10px;
+    box-shadow: 0 4px 6px 0 rgb(32 33 36 / 19%);
+    display: none;
+}
+
+#editFormContainer form input,
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#editFormContainer input[type=submit] {
+    width: 100%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 2px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.preview-blog {
+    padding: 20px;
+    background: #f5f5f7;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px 0 rgb(32 33 36 / 19%);
+}
+
+.go-back {
+    border: 1px solid #ccc !important;
+    padding: 8px 16px;
+    display: block;
+    margin: 5px;
+    width: fit-content;
+}
+
+button#edit {
+    padding: 12px 20px;
+    background: #373636;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid #373636;
+    margin: 0 10px;
+}
+
+button#edit:hover {
+    background-color: white;
+    color: #373636;
 }

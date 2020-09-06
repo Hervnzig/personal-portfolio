@@ -25,6 +25,14 @@ const loading = document.querySelector("#loading");
 const readBlog = document.querySelector("#read_post");
 const pagination = document.querySelector("#pagination");
 
+// dashboard elements
+const dashPosts = document.querySelector("#blogs_dash");
+const settings = document.querySelector("#settings");
+const dashPagination = document.querySelector("#pagination-dash");
+const editButton = document.querySelector("#edit");
+const deleteButton = document.querySelector("#delete");
+const editFormContainer = document.querySelector("#editFormContainer");
+
 let editMode = false;
 
 let currentPostId;
@@ -41,12 +49,15 @@ let postsArray = [];
 let size;
 let postsSize;
 
+let dashPostsArray = [];
+let dash_size;
+
 const getPosts = async () => {
   let docs;
   let postsRef = firebase
     .firestore()
     .collection("posts")
-    .orderBy("blog_date")
+    .orderBy("blog_title")
     .limit(3);
 
   let _size = await firebase.firestore().collection("posts").get();
@@ -74,6 +85,38 @@ const getPosts = async () => {
   console.log(postsSize);
 };
 
+const getPostsDash = async () => {
+  let docs;
+  let postsRef = firebase
+    .firestore()
+    .collection("posts")
+    .orderBy("blog_title")
+    .limit(3);
+  let _dash_size = await firebase.firestore().collection("posts").get();
+  dash_size = _dash_size.dash_size;
+
+  await postsRef.get().then((documentSnapshots) => {
+    docs = documentSnapshots;
+
+    lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+    console.log("last", lastVisible);
+  });
+
+  docs["docs"].forEach((doc) => {
+    dashPostsArray.push({ id: doc.id, data: doc.data() });
+  });
+
+  if (dashPostsArray.length > 0) {
+    dashPagination.style.display = "block";
+  } else {
+    dashPagination.style.display = "none";
+  }
+
+  await createChildrenDash(dashPostsArray);
+  postsSize = dashPosts.childNodes.length;
+  console.log(postsSize);
+};
+
 const paginate = async () => {
   pagination.addEventListener("click", () => {
     paginate();
@@ -82,7 +125,7 @@ const paginate = async () => {
   let postsRef = firebase
     .firestore()
     .collection("posts")
-    .orderBy("blog_date")
+    .orderBy("blog_title")
     .startAfter(lastVisible)
     .limit(3);
 
@@ -177,15 +220,18 @@ const getPost = async () => {
     .catch((err) => console.log(err));
 
   currentPostId = post.id;
-  currentPostImage = post.data().blog_img;
   currentPostTitle = post.data().blog_title;
   currentPostAuthor = post.data().blog_author;
   currentPostDate = post.data().blog_date;
   currentPostContent = post.data().blog_subject;
   currentPostTag = post.data().blog_tag;
+  currentPostImage = post.data().fileRef;
 
   if (loading !== null) {
     loading.innerHTML = "";
+  }
+  if (post && deleteButton != null) {
+    deleteButton.style.display = "block";
   }
 
   let div = document.createElement("div");
@@ -239,7 +285,7 @@ const getPostIdFromURL = () => {
   return postId;
 };
 
-// ===== Create new Post and upload =====
+// ===== Create new Post and upload (Admin dashboard) =====
 if (createForm !== null) {
   let d;
   createForm.addEventListener("submit", async (e) => {
@@ -354,10 +400,10 @@ const createChildren = (arr) => {
       authorParagraph.appendChild(authPrgrph);
 
       // blog date
-      let dateParagraph = document.createElement("span");
-      dateParagraph.setAttribute("class", "date");
-      let datePrgrph = document.createTextNode(post.data.blog_date);
-      dateParagraph.appendChild(datePrgrph);
+      // let dateParagraph = document.createElement("span");
+      // dateParagraph.setAttribute("class", "date");
+      // let datePrgrph = document.createTextNode(post.data.blog_date);
+      // dateParagraph.appendChild(datePrgrph);
 
       // blog content
       let blogParagraph = document.createElement("p");
@@ -379,7 +425,7 @@ const createChildren = (arr) => {
 
       childDiv.appendChild(h4);
       childDiv.appendChild(authorParagraph);
-      childDiv.appendChild(dateParagraph);
+      // childDiv.appendChild(dateParagraph);
       childDiv.appendChild(blogParagraph);
       childDiv.appendChild(blogType);
       childDiv.appendChild(linkSection);
@@ -392,11 +438,316 @@ const createChildren = (arr) => {
   }
 };
 
+const createChildrenDash = (arr) => {
+  if (dashPosts !== null) {
+    arr.map((post) => {
+      let mainDiv = document.createElement("div");
+      mainDiv.setAttribute("class", "blog-container-dash");
+
+      let dash_img = document.createElement("img");
+      dash_img.setAttribute("class", "dash_img image-styling");
+      dash_img.setAttribute("src", post.data.blog_img);
+
+      let dashTitleContentDiv = document.createElement("div");
+      dashTitleContentDiv.setAttribute("class", "blog-description-dash");
+
+      let dashh3 = document.createElement("h3");
+      let h3DashTitle = document.createTextNode(post.data.blog_title);
+      dashh3.appendChild(h3DashTitle);
+
+      let dashElementContent = document.createElement("p");
+      let dashContent = document.createTextNode(post.data.blog_subject);
+      dashElementContent.appendChild(dashContent);
+
+      let dashButtonContainer = document.createElement("div");
+      dashButtonContainer.setAttribute("class", "blog-edit-btns");
+
+      let dashItemLink = document.createElement("a");
+      dashItemLink.innerHTML = "settings";
+      dashItemLink.setAttribute("href", "admin-blog-settings.html#/" + post.id);
+      dashItemLink.setAttribute("id", "settings");
+
+      dashTitleContentDiv.appendChild(dashh3);
+      dashTitleContentDiv.appendChild(dashElementContent);
+      dashButtonContainer.appendChild(dashItemLink);
+
+      mainDiv.appendChild(dash_img);
+      mainDiv.appendChild(dashTitleContentDiv);
+      mainDiv.appendChild(dashButtonContainer);
+
+      dashPosts.appendChild(mainDiv);
+    });
+  }
+};
+
+const paginateDash = async () => {
+  dashPagination.addEventListener("click", () => {
+    paginateDash();
+  });
+
+  let docs;
+  let postsRef = firebase
+    .firestore()
+    .collection("posts")
+    .orderBy("blog_title")
+    .startAfter(lastVisible)
+    .limit(3);
+
+  await postsRef.get().then((documentSnapshots) => {
+    docs = documentSnapshots;
+
+    lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+    console.log("last", lastVisible);
+  });
+
+  docs["docs"].forEach((doc, i) => {
+    let mainDiv = document.createElement("div");
+    mainDiv.setAttribute("class", "blog-container-dash");
+
+    let dash_img = document.createElement("img");
+    dash_img.setAttribute("class", "dash_img image-styling");
+    dash_img.setAttribute("src", doc.data().blog_img);
+
+    let dashTitleContentDiv = document.createElement("div");
+    dashTitleContentDiv.setAttribute("class", "blog-description-dash");
+
+    let dashh3 = document.createElement("h3");
+    let h3DashTitle = document.createTextNode(doc.data().blog_title);
+    dashh3.appendChild(h3DashTitle);
+
+    let dashElementContent = document.createElement("p");
+    let dashContent = document.createTextNode(doc.data().blog_subject);
+    dashElementContent.appendChild(dashContent);
+
+    let dashButtonContainer = document.createElement("div");
+    dashButtonContainer.setAttribute("class", "blog-edit-btns");
+
+    let dashItemLink = document.createElement("a");
+    dashItemLink.innerHTML = "settings";
+    dashItemLink.setAttribute("href", "admin-blog-settings.html#/" + doc.id);
+    dashItemLink.setAttribute("id", "settings");
+
+    dashTitleContentDiv.appendChild(dashh3);
+    dashTitleContentDiv.appendChild(dashElementContent);
+    dashButtonContainer.appendChild(dashItemLink);
+
+    mainDiv.appendChild(dash_img);
+    mainDiv.appendChild(dashTitleContentDiv);
+    mainDiv.appendChild(dashButtonContainer);
+
+    dashPosts.appendChild(mainDiv);
+    postsSize++;
+    console.log(postsSize);
+  });
+};
+if (dashPagination != null) {
+  dashPagination.addEventListener("click", () => {
+    paginateDash();
+  });
+}
+
+if (deleteButton != null) {
+  deleteButton.addEventListener("click", async () => {
+    const storageRef = firebase.storage().ref();
+    await storageRef
+      .child(currentPostImage)
+      .delete()
+      .catch((err) => {
+        console.log(err);
+      });
+    alert("Confirm to delete");
+    await firebase.firestore().collection("posts").doc(currentPostId).delete();
+
+    window.location.replace("blogs_dash.html");
+  });
+}
+
+const appendEditForm = async () => {
+  let d;
+
+  let form = document.createElement("form");
+  form.setAttribute("method", "POST");
+  form.setAttribute("id", "editForm");
+
+  let titleInput = document.createElement("input");
+  titleInput.setAttribute("value", currentPostTitle);
+  titleInput.setAttribute("id", "editTitle");
+
+  let authorNameInput = document.createElement("input");
+  authorNameInput.setAttribute("value", currentPostAuthor);
+  authorNameInput.setAttribute("id", "editAuth");
+
+  let editBlogTag = document.createElement("input");
+  editBlogTag.setAttribute("value", currentPostTag);
+  editBlogTag.setAttribute("id", "editBlogType");
+
+  let contentTextarea = document.createElement("textarea");
+  contentTextarea.setAttribute("id", "editContent");
+
+  let coverFile = document.createElement("input");
+  coverFile.setAttribute("type", "file");
+  coverFile.setAttribute("id", "editCover");
+
+  let oldCover = document.createElement("input");
+  oldCover.setAttribute("type", "hidden");
+  oldCover.setAttribute("id", "oldCover");
+
+  let editDate = document.createElement("input");
+  editDate.setAttribute("type", "date");
+  editDate.setAttribute("id", "editDate");
+
+  let submit = document.createElement("input");
+  submit.setAttribute("value", "update post");
+  submit.setAttribute("type", "submit");
+  submit.setAttribute("id", "editSubmit");
+
+  form.appendChild(titleInput);
+  form.appendChild(authorNameInput);
+  form.appendChild(editBlogTag);
+  form.appendChild(contentTextarea);
+  form.appendChild(editDate);
+  form.appendChild(coverFile);
+  form.appendChild(oldCover);
+  form.appendChild(submit);
+
+  editFormContainer.appendChild(form);
+
+  document.getElementById("editContent").value = currentPostContent;
+  document.getElementById("oldCover").value = currentPostImage;
+
+  document.querySelector("#editForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (
+      document.getElementById("editTitle").value != "" &&
+      document.getElementById("editAuth").value != "" &&
+      document.getElementById("editBlogType").value != "" &&
+      document.getElementById("editContent").value != "" &&
+      document.getElementById("editDate").value != ""
+    ) {
+      if (document.getElementById("editCover").files[0] !== undefined) {
+        const cover = document.getElementById("editCover").files[0];
+        const storageRef = firebase.storage().ref();
+        const storageChild = storageRef.child(cover.name);
+
+        console.log("updating file...");
+
+        const postCover = storageChild.put(cover);
+
+        await new Promise((resolve) => {
+          postCover.on(
+            "state_changed",
+            (snapshot) => {
+              let progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              progress.innerHTML =
+                "Updating progess " + Math.trunc(progress) + " %";
+
+              if (progressHandler != null) {
+                progressHandler.style.display = "block";
+              }
+              if (postSubmit != null) {
+                postSubmit.disabled = true;
+              }
+              if (progressBar != null) {
+                progressBar.value = progress;
+              }
+            },
+            (error) => {
+              console.log(error);
+            },
+            async () => {
+              const downloadURL = await storageChild.getDownloadURL();
+              d = downloadURL;
+              console.log(d);
+              resolve();
+            }
+          );
+        });
+
+        const fileRef = await firebase.storage().refFromURL(d);
+        console.log(currentPostImage);
+
+        await storageRef
+          .child(currentPostImage)
+          .delete()
+          .catch((err) => {
+            console.log(err);
+          });
+        console.log("Previous image deleted successfully");
+
+        let post = {
+          blog_title: document.getElementById("editTitle").value,
+          blog_author: document.getElementById("editAuth").value,
+          blog_tag: document.getElementById("editBlogType").value,
+          blog_subject: document.getElementById("editContent").value,
+          blog_date: document.getElementById("editDate").value,
+          blog_img: d,
+          fileRef: fileRef.location.path,
+        };
+
+        console.log(post);
+
+        await firebase
+          .firestore()
+          .collection("posts")
+          .doc(currentPostId)
+          .set(post, { merge: true });
+        window.reload();
+      } else {
+        await firebase
+          .firestore()
+          .collection("posts")
+          .doc(currentPostId)
+          .set(
+            {
+              blog_title: document.getElementById("editTitle").value,
+              blog_author: document.getElementById("editAuth").value,
+              blog_tag: document.getElementById("editBlogType").value,
+              blog_subject: document.getElementById("editContent").value,
+              blog_date: document.getElementById("editDate").value,
+            },
+            { merge: true }
+          );
+        location.reload();
+      }
+    } else {
+      console.log("You need to fill the inputs");
+    }
+  });
+};
+
+if (editButton !== null) {
+  editButton.addEventListener("click", () => {
+    if (editMode == false) {
+      editMode = true;
+      console.log("Enabling Edit Mode");
+
+      editFormContainer.style.display = "block";
+
+      appendEditForm();
+    } else {
+      editMode = false;
+      console.log("Disabling Edit Mode");
+      editFormContainer.style.display = "none";
+
+      removeEditForm();
+    }
+  });
+}
+
+const removeEditForm = () => {
+  let editForm = document.getElementById("editForm");
+  editFormContainer.removeChild(editForm);
+};
+
 // check if the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", (e) => {
   getPosts();
+  getPostsDash();
   if (
     !location.href.includes("blog-page.html") &&
+    !location.href.includes("blogs_dash.html") &&
     !location.href.includes("create-blog.html")
   ) {
     getPost();
