@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/styles.css" rel="stylesheet" />
+    <title>Edit posts</title>
+</head>
+
+<body>
+
+    <nav class="nav-container">
+        <div class="nav main-width-adjust">
+            <div class="nav-logo">
+                <a href="#">
+                    <h1>Herve.</h1>
+                </a>
+            </div>
+            <div class="navbar">
+                <div class="icon-bar" onclick="Show()">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+                <ul class="nav-lists" id="nav-lists">
+                    <li class="close"><span onclick="Hide()">×</span></li>
+                    <li id="logged-in"><a href="./about.html">About</a></li>
+                    <li id="logged-in"><a href="./projects.html">Projects</a></li>
+                    <li id="logged-in"><a href="./blog-page.html">Blogs</a></li>
+                    <li id="logged-in"><a href="./resume.html">Resume</a></li>
+                    <li id="logged-in"><a href="./contact.html">Contact</a></li>
+                    <li id="logged-in"><a href="#">Account</a></li>
+                    <li id="logged-in"><a href="#">logout</a></li>
+                    <li id="logged-out"><a href="#">signUp</a></li>
+                    <li id="logged-out"><a href="#">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="main-width-adjust dash-settings-content">
+        <a href="./blogs_dash.html" id="back" class="go-back">❮ Go back</a>
+        <h2>Let's Blog</h2>
+        <button id="delete" class="danger">Delete post</button>
+        <div class="full-blog blog-settings">
+            <div class="edit-block">
+                <button id="edit">Edit</button> <span>click this button</span>
+                <div id="editFormContainer"></div>
+            </div>
+            <div id="read_post" class="preview-blog"></div>
+        </div>
+        <hr />
+        <section>
+            <h2>Rections on this post</h2>
+            <div class="comment-block" id="comments">
+                <div>
+                    <a class="comment-user" href="#" id="user">hnow23</a>
+                    <p id="user-comment">
+                        Yeah but a the major issue we face right now is that clients want
+                        a bigger logo
+                    </p>
+                    <button>Reply</button>
+                </div>
+                <div>
+                    <a class="comment-user" href="#" id="user">MrxDreamer</a>
+                    <p id="user-comment">
+                        Hard pass! I think Nike is running out of ideas. People will still buy them. Just like people
+                        that
+                        buy Madden games every time it comes out. Same game, full price of nothing creative.
+                    </p>
+                    <button>Reply</button>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/uiscripts.js"></script>
+
+</body>
+
+</html>
