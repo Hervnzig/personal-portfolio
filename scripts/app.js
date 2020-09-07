@@ -693,7 +693,7 @@ const appendEditForm = async () => {
           .collection("posts")
           .doc(currentPostId)
           .set(post, { merge: true });
-        window.reload();
+        location.reload();
       } else {
         await firebase
           .firestore()
@@ -729,9 +729,9 @@ if (editButton !== null) {
     } else {
       editMode = false;
       console.log("Disabling Edit Mode");
-      editFormContainer.style.display = "none";
-
       removeEditForm();
+
+      editFormContainer.style.display = "none";
     }
   });
 }
