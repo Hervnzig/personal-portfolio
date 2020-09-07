@@ -3,16 +3,16 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="./styles/styles.css" rel="stylesheet" />
-  <title>Blog title</title>
+  <meta name="viewport" content="width=About, initial-scale=1.0" />
+  <link href="../styles/styles.css" rel="stylesheet" />
+  <title>About Me</title>
 </head>
 
 <body>
   <nav class="nav-container">
     <div class="nav main-width-adjust">
       <div class="nav-logo">
-        <a href="#">
+        <a href="../index.html">
           <h1>Herve.</h1>
         </a>
       </div>
@@ -38,28 +38,26 @@
     </div>
   </nav>
 
-  <section class="main-width-adjust">
-    <h2>Let's Blog</h2>
-    <div id="loading"></div>
-    <div id="read_post" class="full-blog"></div>
-    <hr />
-    <section>
-      <button>Drop a comment</button>
-      <button>Share</button>
-    </section>
-    <section class="comment-block">
-      <div>
-        <a class="comment-user" href="#">hnow23</a>
+  <section class="main-container adjuster main-width-adjust">
+    <h2>Me in a Summary</h2>
+    <div class="about-main">
+      <img class="profile" src="../assets/Profile.PNG" />
+      <section class="about-me-desc">
         <p>
-          Yeah but a the major issue we face right now is that clients want
-          a bigger logo
+          A continuous learner highly motivated by trying new things and
+          innovating around them. A self starter with a growth mindset,
+          positive attitude, a team player, and able to adapt to change
+          quick and soft. Coding and debugging define much of my life but I
+          also cook and play basketball as my favorite hobbies.
         </p>
-        <button>Reply</button>
-      </div>
-    </section>
-
-    <a class="more-blogs" href="./blog-page.html">Explore more blogs</a>
-
+        <section class="about-connect">
+          <a href="#">Twitter</a>
+          <a href="#">Github</a>
+          <a href="#">Instagram</a>
+          <a href="#">Email</a>
+        </section>
+      </section>
+    </div>
   </section>
 
   <footer class="footer-parent">
@@ -111,10 +109,6 @@
     </section>
   </footer>
 
-  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
-  <script src="./scripts/app.js"></script>
   <script src="./scripts/uiscripts.js"></script>
 </body>
 
