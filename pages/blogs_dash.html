@@ -29,46 +29,83 @@
           <li id="logged-in"><a href="./blog-page.html">Blogs</a></li>
           <li id="logged-in"><a href="./resume.html">Resume</a></li>
           <li id="logged-in"><a href="./contact.html">Contact</a></li>
-          <li id="logged-in"><a href="#">Account</a></li>
-          <li id="logged-in"><a href="#">logout</a></li>
-          <li id="logged-out"><a href="#">signUp</a></li>
-          <li id="logged-out"><a href="#">Login</a></li>
+          <!-- <li id="logged-in"><a href="#" class="modal-trigger" data-target="modal-account">Account</a></li> -->
+          <li id="logged-out"><a href="#" class="modal-trigger-sign-up" data-target="modal-signup">signUp</a></li>
+          <li id="logged-out"><a href="#" class="modal-trigger" data-target="modal-login">Login</a></li>
+          <li id="logged-in"><a href="#" id="logout">Logout</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
+
+
+  <!-- Sign up -->
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <span class="close-button-sign-up">×</span>
+      <h4>Sign up</h4><br />
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" required />
+          <label for="signup-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password" required />
+          <label for="signup-password">Choose password</label>
+        </div>
+        <button class="btn">Sign up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Login -->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <span class="close-button">×</span>
+      <h4>Login</h4><br />
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" required />
+          <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" required />
+          <label for="login-password">Your password</label>
+        </div>
+        <button class="btn">Login</button>
+      </form>
+    </div>
+  </div>
+
+
+
+
   <section class="main-width-adjust">
-    <h2>Here are your created blogs</h2>
-    <a href="./create-blog.html" class="to-new-blog">Write new blog</a>
-    <!-- <div class="blog-container-dash">
-      <img class="dash_img image-styling" src="./assets/blog_pic2.png" />
-      <div class="blog-description-dash">
-        <h3>blog title</h3>
-        <p>
-          Content: a plan or drawing produced to show the look and function or
-          workings of a building, garment, or other object before it is made.
-        </p>
-      </div>
-      <div class="blog-edit-btns">
-        <button id="settings">Settings</button>
-        <a href="" id="settings">Settings</a>
-      </div>
-    </div> -->
+    <div class="main-section">
 
-    <!-- Dashboard blogs -->
-    <div id="blogs_dash"></div>
-    <!-- <div class="blog-container-dash" id="blogs_dash"></div> -->
+      <h2>Here are your created blogs</h2>
+      <a href="./create-blog.html" class="to-new-blog">Write new blog</a>
 
-    <div id="pagination-dash" class="pagination-button">
-      Load More
+      <!-- Dashboard blogs -->
+      <div id="blogs_dash"></div>
+      <!-- <div class="blog-container-dash" id="blogs_dash"></div> -->
+
+      <div id="pagination-dash" class="pagination-button">
+        Load More
+      </div>
     </div>
   </section>
 
+
+
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+  <script src="../scripts/firebase.js"></script>
   <script src="../scripts/app.js"></script>
+  <script src="../scripts/auth.js"></script>
   <script src="../scripts/uiscripts.js"></script>
 </body>
 
