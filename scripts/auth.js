@@ -1,3 +1,13 @@
+// listening for auth status changes
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    console.log("User logged in: " + user);
+  } else {
+    Notify();
+  }
+});
+
 // signup
 const signUpForm = document.querySelector("#signup-form");
 signUpForm.addEventListener("submit", (e) => {
@@ -21,7 +31,7 @@ const logout = document.querySelector("#logout");
 logout.addEventListener("click", (e) => {
   e.preventDefault();
   auth.signOut().then(() => {
-    console.log("User has logged out");
+    // console.log("User has logged out");
   });
 });
 
@@ -36,7 +46,6 @@ loginForm.addEventListener("submit", (e) => {
 
   auth.signInWithEmailAndPassword(email, password).then((cred) => {
     const modalLogin = document.querySelector("modal-login");
-    console.log(cred);
     loginForm.reset();
   });
   toggleModal();

@@ -46,3 +46,12 @@ function windowOnClickSignUp(event) {
 triggerSignUp.addEventListener("click", toggleModalSignUp);
 closeButtonSignUp.addEventListener("click", toggleModalSignUp);
 window.addEventListener("click", windowOnClickSignUp);
+
+// ======= Snackbar notification ==========
+function Notify() {
+  let x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 10000);
+}

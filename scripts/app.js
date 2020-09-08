@@ -58,14 +58,14 @@ const getPosts = async () => {
     postsArray.push({ id: doc.id, data: doc.data() });
   });
 
-  if (postsArray.length > 0) {
-    pagination.style.display = "block";
-  } else {
-    pagination.style.display = "none";
-  }
+  // if (postsArray.length > 0) {
+  //   pagination.style.display = "block";
+  // } else {
+  //   pagination.style.display = "none";
+  // }
 
   await createChildren(postsArray);
-  postsSize = postCollection.childNodes.length;
+  // postsSize = postCollection.childNodes.length;
   console.log(postsSize);
 };
 
@@ -435,7 +435,7 @@ const createChildrenDash = (arr) => {
       let dashTitleContentDiv = document.createElement("div");
       dashTitleContentDiv.setAttribute("class", "blog-description-dash");
 
-      let dashh3 = document.createElement("h5");
+      let dashh3 = document.createElement("h4");
       let h3DashTitle = document.createTextNode(post.data.blog_title);
       dashh3.appendChild(h3DashTitle);
 
@@ -495,7 +495,7 @@ const paginateDash = async () => {
     let dashTitleContentDiv = document.createElement("div");
     dashTitleContentDiv.setAttribute("class", "blog-description-dash");
 
-    let dashh3 = document.createElement("h3");
+    let dashh3 = document.createElement("h4");
     let h3DashTitle = document.createTextNode(doc.data().blog_title);
     dashh3.appendChild(h3DashTitle);
 
