@@ -50,12 +50,20 @@
       <h4>Sign up</h4><br />
       <form id="signup-form">
         <div class="input-field">
-          <input type="email" id="signup-email" required />
-          <label for="signup-email">Email address</label>
+          <label for="signup-fname">First name</label>
+          <input type="text" id="signup-fname" required autocomplete="on" />
         </div>
         <div class="input-field">
-          <input type="password" id="signup-password" required />
+          <label for="signup-lname">Last name</label>
+          <input type="text" id="signup-lname" required autocomplete="on" />
+        </div>
+        <div class="input-field">
+          <label for="signup-email">Email address</label>
+          <input type="email" id="signup-email" required autocomplete="on" />
+        </div>
+        <div class="input-field">
           <label for="signup-password">Choose password</label>
+          <input type="password" id="signup-password" required autocomplete="on" />
         </div>
         <button class="btn">Sign up</button>
       </form>
@@ -69,15 +77,24 @@
       <h4>Login</h4><br />
       <form id="login-form">
         <div class="input-field">
-          <input type="email" id="login-email" required />
+          <input type="email" id="login-email" required autocomplete="on" />
           <label for="login-email">Email address</label>
         </div>
         <div class="input-field">
-          <input type="password" id="login-password" required />
+          <input type="password" id="login-password" required autocomplete="on" />
           <label for="login-password">Your password</label>
         </div>
         <button class="btn">Login</button>
       </form>
+    </div>
+  </div>
+
+  <!-- ACCOUNT MODAL -->
+  <div id="modal-account" class="modal">
+    <div class="modal-content center-align">
+      <span class="close-button-account">×</span>
+      <h4>Account details</h4><br />
+      <div class="account-details"></div>
     </div>
   </div>
 
@@ -87,7 +104,8 @@
   <section class="main-width-adjust">
     <div class="main-section">
 
-      <h2>Here are your created blogs</h2>
+      <strong></strong>
+      <h2>Blogs dashboard</h2></strong>
       <a href="./create-blog.html" class="to-new-blog">Write new blog</a>
       <div id="snackbar">Not logged-in.</div>
       <!-- Dashboard blogs -->
@@ -105,6 +123,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
   <script src="../scripts/firebase.js"></script>
   <script src="../scripts/app.js"></script>

@@ -3,7 +3,7 @@
 auth.onAuthStateChanged((user) => {
   if (user) {
     setupUI(user);
-    console.log("User logged in: " + user.email);
+    // console.log("User logged in: " + user.email);
   } else {
     setupUI();
     Notify();
@@ -20,10 +20,18 @@ signUpForm.addEventListener("submit", (e) => {
   const password = signUpForm["signup-password"].value;
 
   // sign up the user
-  auth.createUserWithEmailAndPassword(email, password).then((credential) => {
-    const modalSignUp = document.querySelector("modal-signup");
-    signUpForm.reset();
-  });
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .then((credential) => {
+      return db.collection("users").doc(credential.user.uid).set({
+        first_name: signUpForm["signup-fname"].value,
+        last_name: signUpForm["signup-lname"].value,
+      });
+    })
+    .then(() => {
+      const modalSignUp = document.querySelector("modal-signup");
+      signUpForm.reset();
+    });
 
   toggleModalSignUp(); // function from uiscripts.js
 });

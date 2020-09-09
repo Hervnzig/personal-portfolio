@@ -1166,7 +1166,7 @@ button#edit:hover {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(-50%, 30%);
+    transform: translate(-50%, 25%);
     background-color: white;
     padding: 1rem 1.5rem;
     width: 24rem;
@@ -1203,7 +1203,7 @@ button#edit:hover {
 #login-form .input-field,
 #signup-form .input-field {
     position: relative;
-    margin-top: 1px;
+    margin-top: 2px;
     margin-bottom: 5px;
     float: none;
     width: 100%;
@@ -1258,6 +1258,27 @@ button#edit:hover {
     background-color: darkgray;
 }
 
+/* Account modal */
+.show-modal-3 {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.close-button-account {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+.close-button-account:hover {
+    background-color: darkgray;
+}
 
 #snackbar {
     visibility: hidden;

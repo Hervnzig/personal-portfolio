@@ -24,19 +24,77 @@
         </div>
         <ul class="nav-lists" id="nav-lists">
           <li class="close"><span onclick="Hide()">×</span></li>
-          <li id="logged-in"><a href="./about.html">About</a></li>
-          <li id="logged-in"><a href="./projects.html">Projects</a></li>
-          <li id="logged-in"><a href="./blog-page.html">Blogs</a></li>
-          <li id="logged-in"><a href="./resume.html">Resume</a></li>
-          <li id="logged-in"><a href="./contact.html">Contact</a></li>
-          <li id="logged-in"><a href="#">Account</a></li>
-          <li id="logged-in"><a href="#">logout</a></li>
-          <li id="logged-out"><a href="#">signUp</a></li>
-          <li id="logged-out"><a href="#">Login</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./blog-page.html">Blogs</a></li>
+          <li><a href="./resume.html">Resume</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li id="logged-in" style="display: none;"><a href="#" class="modal-trigger-account"
+              data-target="modal-account">Account</a></li>
+          <li id="logged-in" style="display: none;"><a href="#" id="logout">Logout</a></li>
+          <li id="logged-out" style="display: none;"><a href="#" class="modal-trigger-sign-up"
+              data-target="modal-signup">signUp</a></li>
+          <li id="logged-out" style="display: none;"><a href="#" class="modal-trigger"
+              data-target="modal-login">Login</a></li>
         </ul>
       </div>
     </div>
   </nav>
+
+  <!-- Sign up -->
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <span class="close-button-sign-up">×</span>
+      <h4>Sign up</h4><br />
+      <form id="signup-form">
+        <div class="input-field">
+          <label for="signup-fname">First name</label>
+          <input type="text" id="signup-fname" required autocomplete="on" />
+        </div>
+        <div class="input-field">
+          <label for="signup-lname">Last name</label>
+          <input type="text" id="signup-lname" required autocomplete="on" />
+        </div>
+        <div class="input-field">
+          <label for="signup-email">Email address</label>
+          <input type="email" id="signup-email" required autocomplete="on" />
+        </div>
+        <div class="input-field">
+          <label for="signup-password">Choose password</label>
+          <input type="password" id="signup-password" required autocomplete="on" />
+        </div>
+        <button class="btn">Sign up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Login -->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <span class="close-button">×</span>
+      <h4>Login</h4><br />
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" required autocomplete="on" />
+          <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" required autocomplete="on" />
+          <label for="login-password">Your password</label>
+        </div>
+        <button class="btn">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ACCOUNT MODAL -->
+  <div id="modal-account" class="modal">
+    <div class="modal-content center-align">
+      <span class="close-button-account">×</span>
+      <h4>Account details</h4><br />
+      <div class="account-details"></div>
+    </div>
+  </div>
 
   <section class="content-project main-width-adjust">
     <section class="main-section">
@@ -159,6 +217,13 @@
     </section>
   </footer>
 
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+  <script src="../scripts/firebase.js"></script>
+  <script src="../scripts/app.js"></script>
+  <script src="../scripts/auth.js"></script>
   <script src="../scripts/uiscripts.js"></script>
 </body>
 
