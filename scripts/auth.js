@@ -2,8 +2,10 @@
 
 auth.onAuthStateChanged((user) => {
   if (user) {
-    console.log("User logged in: " + user);
+    setupUI(user);
+    console.log("User logged in: " + user.email);
   } else {
+    setupUI();
     Notify();
   }
 });

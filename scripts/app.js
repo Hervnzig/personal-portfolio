@@ -638,7 +638,7 @@ const appendEditForm = async () => {
               }
             },
             (error) => {
-              console.log(error);
+              console.log(error.message);
             },
             async () => {
               const downloadURL = await storageChild.getDownloadURL();

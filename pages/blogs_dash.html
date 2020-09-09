@@ -24,15 +24,18 @@
         </div>
         <ul class="nav-lists" id="nav-lists">
           <li class="close"><span onclick="Hide()">×</span></li>
-          <li id="logged-in"><a href="./about.html">About</a></li>
-          <li id="logged-in"><a href="./projects.html">Projects</a></li>
-          <li id="logged-in"><a href="./blog-page.html">Blogs</a></li>
-          <li id="logged-in"><a href="./resume.html">Resume</a></li>
-          <li id="logged-in"><a href="./contact.html">Contact</a></li>
-          <!-- <li id="logged-in"><a href="#" class="modal-trigger" data-target="modal-account">Account</a></li> -->
-          <li id="logged-out"><a href="#" class="modal-trigger-sign-up" data-target="modal-signup">signUp</a></li>
-          <li id="logged-out"><a href="#" class="modal-trigger" data-target="modal-login">Login</a></li>
-          <li id="logged-in"><a href="#" id="logout">Logout</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./blog-page.html">Blogs</a></li>
+          <li><a href="./resume.html">Resume</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li id="logged-in" style="display: none;"><a href="#" class="modal-trigger-account"
+              data-target="modal-account">Account</a></li>
+          <li id="logged-in" style="display: none;"><a href="#" id="logout">Logout</a></li>
+          <li id="logged-out" style="display: none;"><a href="#" class="modal-trigger-sign-up"
+              data-target="modal-signup">signUp</a></li>
+          <li id="logged-out" style="display: none;"><a href="#" class="modal-trigger"
+              data-target="modal-login">Login</a></li>
         </ul>
       </div>
     </div>

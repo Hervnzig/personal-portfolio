@@ -12,6 +12,10 @@ body {
     transition: background 1s;
 }
 
+img {
+    border-radius: 3px;
+}
+
 
 .main-section {
     margin: 62px 0;
@@ -809,6 +813,12 @@ h2 {
 
 .full-blog {
     margin: 10px auto;
+}
+
+.read-blog {
+    background: #f7f6f6;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 11%);
     padding: 10px;
 }
 
@@ -847,7 +857,7 @@ h4 {
     position: absolute;
     padding: 1em;
     margin: 0 10px 20px 0;
-    background: #373636;
+    background: #00000045;
     color: white;
 }
 
