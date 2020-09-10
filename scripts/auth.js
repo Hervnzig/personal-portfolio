@@ -3,7 +3,7 @@
 auth.onAuthStateChanged((user) => {
   if (user) {
     setupUI(user);
-    // console.log("User logged in: " + user.email);
+    console.log("User logged in: " + user.email);
   } else {
     setupUI();
     Notify();
@@ -27,6 +27,7 @@ signUpForm.addEventListener("submit", (e) => {
         first_name: signUpForm["signup-fname"].value,
         last_name: signUpForm["signup-lname"].value,
       });
+      console.log(credential);
     })
     .then(() => {
       const modalSignUp = document.querySelector("modal-signup");
@@ -41,7 +42,7 @@ const logout = document.querySelector("#logout");
 logout.addEventListener("click", (e) => {
   e.preventDefault();
   auth.signOut().then(() => {
-    // console.log("User has logged out");
+    console.log("User has logged out");
   });
 });
 
@@ -53,8 +54,10 @@ loginForm.addEventListener("submit", (e) => {
   // get user info
   const email = loginForm["login-email"].value;
   const password = loginForm["login-password"].value;
+  console.log(email, password);
 
   auth.signInWithEmailAndPassword(email, password).then((cred) => {
+    console.log(cred);
     const modalLogin = document.querySelector("modal-login");
     loginForm.reset();
   });

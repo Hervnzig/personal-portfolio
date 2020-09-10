@@ -58,14 +58,14 @@ const getPosts = async () => {
     postsArray.push({ id: doc.id, data: doc.data() });
   });
 
-  // if (postsArray.length > 0) {
-  //   pagination.style.display = "block";
-  // } else {
-  //   pagination.style.display = "none";
-  // }
+  if (postsArray.length > 0) {
+    pagination.style.display = "block";
+  } else {
+    pagination.style.display = "none";
+  }
 
   await createChildren(postsArray);
-  // postsSize = postCollection.childNodes.length;
+  postsSize = postCollection.childNodes.length;
   console.log(postsSize);
 };
 
