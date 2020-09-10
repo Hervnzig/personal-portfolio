@@ -1,0 +1,263 @@
+[33mcommit 08305a5d4ab7a14c0a88a4a60c740d62cde7843d[m[33m ([m[1;36mHEAD -> [m[1;32mfix-landing-page-responsiveness[m[33m, [m[1;31morigin/fix-landing-page-responsiveness[m[33m)[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Thu Sep 10 17:37:18 2020 +0200
+
+    create comment UI done, remaining is adding it to the backend
+
+[33mcommit a5304f5e7059df2d928a9a9cb78b44525f0251e2[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Sep 9 16:53:45 2020 +0200
+
+    authentication
+
+[33mcommit 5341421bf6c3083b926aa27382e753df942d1442[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Sep 9 13:00:07 2020 +0200
+
+    authentication rules added
+
+[33mcommit 64ca8d541f80f101edaf645c1f0056e33b5c2bf4[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Tue Sep 8 20:27:19 2020 +0200
+
+    setting up auth rules
+
+[33mcommit 1fe22dc4d5f738f0cd71e4fa361812c6cb84df78[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Tue Sep 8 18:54:20 2020 +0200
+
+    Authentication added
+
+[33mcommit ce51ec75e5e8a9fb3f48c6ab7c1bbb31745cfd42[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Mon Sep 7 15:13:15 2020 +0200
+
+    fix
+
+[33mcommit 7e11c867f764c23ada926f9fd680d20270b8a2d1[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Mon Sep 7 15:05:28 2020 +0200
+
+    fixing styles
+
+[33mcommit ef6b0d8ae24797cc612baf5f2c8172fcfcd8cd24[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Sun Sep 6 23:45:58 2020 +0200
+
+    implemented all the CRUD functionalities
+
+[33mcommit 7adc7a27d430eb4a7c810bd781f550b68bf0c02a[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Thu Sep 3 13:04:36 2020 +0200
+
+    a fix
+
+[33mcommit f2b09ce8c3b189ff8fcc8e7506f75150888d1747[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Thu Sep 3 12:11:34 2020 +0200
+
+    fixed nav bar issues with css and javascript
+
+[33mcommit a2929e171077627c18168bf7df789b719b281f4a[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Sep 2 13:53:49 2020 +0200
+
+    can create, retrieve, and  read whole blog
+
+[33mcommit c220f3cfa7488d3daddf114bdcc3b7dc244dc3c4[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Tue Sep 1 14:30:03 2020 +0200
+
+    able to read the full blog
+
+[33mcommit 679c1c005fe414be1ad95cc919706e57ef31446a[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Mon Aug 31 18:54:02 2020 +0200
+
+    create, view, read full blog page
+
+[33mcommit a6279b879a6c85a8664c2097fa6d2a6aaee7921c[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Mon Aug 31 10:26:11 2020 +0200
+
+    fixed some bugs
+
+[33mcommit 6faf028b4522271489f59b6de99eafb15c21706b[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Mon Aug 31 09:38:09 2020 +0200
+
+    Can retrieve posts
+
+[33mcommit 80c80a76f71b7b47e668652a26c9aa870667a023[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Mon Aug 31 09:15:30 2020 +0200
+
+    can create blog now
+
+[33mcommit 34bae10afcd0ca41b25bce36b0fb74e41ec6d3c4[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Fri Aug 28 10:55:05 2020 +0200
+
+    fixing a css styling issue
+
+[33mcommit 85f5c0b9e5b0e451638b9f1d14eb25b0497d37e6[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Fri Aug 28 10:27:55 2020 +0200
+
+    able to retrieve data
+
+[33mcommit 5cde13d591797f14c9c9f553eb84b2c6932f328c[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 26 19:32:45 2020 +0200
+
+    a feature for displaying blog
+
+[33mcommit 1452e4ed7b4ad8739fc25718fccd8d6f44996808[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 26 19:22:23 2020 +0200
+
+    a feature for displaying blog
+
+[33mcommit 7ac965d2bf52448a99db0d6be9eba39e47d5c60b[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 26 19:07:09 2020 +0200
+
+    correcting styles and gitigonore
+
+[33mcommit 35abdcc2bfd93c060fccb6be012661af50552abd[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 26 19:05:02 2020 +0200
+
+    correcting styles and gitigonore
+
+[33mcommit 22c8f75a08a82a19c48de4948ddf434b6ecfea62[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 26 19:02:42 2020 +0200
+
+    correcting styles and gitigonore
+
+[33mcommit 4d24687868371f3b4bd71a2e80244f50327e4ac1[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 26 18:57:30 2020 +0200
+
+    correcting styles and gitigonore
+
+[33mcommit 870d5240b2ea92fae31daa89dbf611aece749309[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 26 18:55:49 2020 +0200
+
+    correcting styles and gitigonore
+
+[33mcommit 010e4082f7f01cbd15bfb31e1b159ae8dc459d45[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Tue Aug 25 13:39:46 2020 +0200
+
+    crucial changes
+
+[33mcommit 0f457a0acc3977b79e132dcfaeda501b44cfc974[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Tue Aug 25 13:34:49 2020 +0200
+
+    crucial changes
+
+[33mcommit 1f2ed115ed3dd233453b407164de8018ebee4cbe[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Tue Aug 25 09:42:36 2020 +0200
+
+    responsive styles changes
+
+[33mcommit f77400d798c959f0818dd1e5b5925defc94aa997[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Mon Aug 24 16:00:58 2020 +0200
+
+    responsive nav menu
+
+[33mcommit 27bb7ead26b92849cec32b341b97f4cb2d529f2f[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Fri Aug 21 01:41:22 2020 +0200
+
+    stylin the nav-bar
+
+[33mcommit f80ac6f92c3481beb43105be906ff9a380065af4[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 19 14:09:02 2020 +0200
+
+    Responsive styles
+
+[33mcommit d25d806a15a6536d0350a5ab0cc91d7d28b90dc1[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 19 13:57:06 2020 +0200
+
+    Responsive styles
+
+[33mcommit c40eb5776b6771c0038e1eb80973d53f4083131c[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 19 12:41:41 2020 +0200
+
+    new page and styles
+
+[33mcommit 30dc0543ad33cef8287bfec27d318228df45181e[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Mon Aug 17 18:20:27 2020 +0200
+
+    new create blog and blogs dash page
+
+[33mcommit a49f1ff63d4f7ee162d97fa5f8c93481dd8e4d28[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Fri Aug 14 14:00:32 2020 +0200
+
+    new styles
+
+[33mcommit 742c2d0b31250a424ad61c073a25d0c7b794ff2a[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Thu Aug 13 18:26:28 2020 +0200
+
+    resume, and blog page creation
+
+[33mcommit 36e5e527eb70235671a82e0294539432c4a93f13[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Thu Aug 13 17:21:00 2020 +0200
+
+    products page and responsiveness
+
+[33mcommit 5093bf9f58b30bbc0a928ffb69d630f5d93f7283[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 12 16:45:46 2020 +0200
+
+    fixing some footer styles
+
+[33mcommit f4b26bc556d6c13aef8add3e2c18d3c3abb0ea87[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 12 16:39:01 2020 +0200
+
+    Added responsiveness styles
+
+[33mcommit b9def913f06c0289be76ac5da0eec0bf3eb3441b[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Wed Aug 12 16:37:14 2020 +0200
+
+    first commit
+
+[33mcommit 65ecd2f6f72cc4977deacf270fd830c3c787d5b2[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Tue Aug 11 15:43:09 2020 +0200
+
+    changed the background color
+
+[33mcommit ca359a870288b8c8f20fe78fdf3c1f4c10a0b082[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Tue Aug 11 15:17:27 2020 +0200
+
+    about page
+
+[33mcommit a08ebe1d84c6c4bcf715e485b465e9707698d1ae[m
+Author: Herve musangwa <hervnzig1@gmail.com>
+Date:   Mon Aug 10 14:57:42 2020 +0200
+
+    index page
+
+[33mcommit 57210eac41b8dd82113ca5adaf21120a48394ac6[m
+Author: Herve Musangwa <31108034+Hervnzig@users.noreply.github.com>
+Date:   Wed Aug 5 16:01:48 2020 +0200
+
+    Initial commit
