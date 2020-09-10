@@ -1,19 +1,3 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyDA46t6qsRN4NQE8KbZPYhlndI2yovrOzo",
-  authDomain: "web-portfolio-blog.firebaseapp.com",
-  databaseURL: "https://web-portfolio-blog.firebaseio.com",
-  projectId: "web-portfolio-blog",
-  storageBucket: "web-portfolio-blog.appspot.com",
-  messagingSenderId: "782884425067",
-  appId: "1:782884425067:web:8f8fc3eec7d76752e4502e",
-  measurementId: "G-SGLTSJ1ZPH",
-};
-
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-
-const db = firebase.firestore();
-
 const postCollection = document.querySelector("#posts_collection");
 const createForm = document.querySelector("#createFrom");
 const progressBar = document.querySelector("#progressBar");
@@ -74,14 +58,14 @@ const getPosts = async () => {
     postsArray.push({ id: doc.id, data: doc.data() });
   });
 
-  if (postsArray.length > 0) {
-    pagination.style.display = "block";
-  } else {
-    pagination.style.display = "none";
-  }
+  // if (postsArray.length > 0) {
+  //   pagination.style.display = "block";
+  // } else {
+  //   pagination.style.display = "none";
+  // }
 
   await createChildren(postsArray);
-  postsSize = postCollection.childNodes.length;
+  // postsSize = postCollection.childNodes.length;
   console.log(postsSize);
 };
 
@@ -451,7 +435,7 @@ const createChildrenDash = (arr) => {
       let dashTitleContentDiv = document.createElement("div");
       dashTitleContentDiv.setAttribute("class", "blog-description-dash");
 
-      let dashh3 = document.createElement("h3");
+      let dashh3 = document.createElement("h4");
       let h3DashTitle = document.createTextNode(post.data.blog_title);
       dashh3.appendChild(h3DashTitle);
 
@@ -511,7 +495,7 @@ const paginateDash = async () => {
     let dashTitleContentDiv = document.createElement("div");
     dashTitleContentDiv.setAttribute("class", "blog-description-dash");
 
-    let dashh3 = document.createElement("h3");
+    let dashh3 = document.createElement("h4");
     let h3DashTitle = document.createTextNode(doc.data().blog_title);
     dashh3.appendChild(h3DashTitle);
 
@@ -654,7 +638,7 @@ const appendEditForm = async () => {
               }
             },
             (error) => {
-              console.log(error);
+              console.log(error.message);
             },
             async () => {
               const downloadURL = await storageChild.getDownloadURL();
