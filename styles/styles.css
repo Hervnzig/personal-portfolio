@@ -114,6 +114,7 @@ ul li {
 /* == nav design === */
 .nav-container {
     background-color: #f5f5f7;
+    border-bottom: 1px solid #e4e2e2;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -801,6 +802,18 @@ h2 {
 }
 
 /* read blog page */
+#writeCommentForm {
+    background: white;
+    display: inline-block;
+}
+
+#writeCommentForm .input-field {
+    background: #f5f5f7 !important;
+    margin: 10px !important;
+    width: 96% !important;
+    display: inline-grid;
+}
+
 .loading-msg {
     font-size: 23px;
     padding: 5em;
@@ -1059,6 +1072,11 @@ a.to-new-blog {
 @media screen and (max-width: 768px) {
     .full-blog.blog-settings {
         display: inline-block;
+    }
+
+    .comment-block {
+        display: block !important;
+        grid-template-columns: none !important;
     }
 }
 

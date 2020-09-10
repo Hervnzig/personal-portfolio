@@ -36,6 +36,7 @@
               data-target="modal-signup">signUp</a></li>
           <li id="logged-out" style="display: none;"><a href="#" class="modal-trigger"
               data-target="modal-login">Login</a></li>
+          <li id="logged-in" style="display: none;"><a href="./blogs_dash.html">Dashboard</a></li>
         </ul>
       </div>
     </div>
@@ -102,17 +103,19 @@
     <div id="read_post" class="full-blog read-blog"></div>
     <hr />
     <section>
-      <button>Drop a comment</button>
-      <button>Share</button>
+      <button id="displayCommentBtn" class="comment_btn">Drop a comment</button>
     </section>
-    <section class="comment-block">
+    <section class="comment-block" id="all_comments">
       <div>
-        <a class="comment-user" href="#">hnow23</a>
-        <p>
-          Yeah but a the major issue we face right now is that clients want
-          a bigger logo
-        </p>
-        <button>Reply</button>
+        <div class="all_comments">
+          <a class="comment-user" href="#">hnow23</a>
+          <p>
+            Yeah but a the major issue we face right now is that clients want
+            a bigger logo
+          </p>
+        </div>
+      </div>
+      <div id="commentFormContainer" style="display: none;">
       </div>
     </section>
 

@@ -110,3 +110,70 @@ function Notify() {
     x.className = x.className.replace("show", "");
   }, 10000);
 }
+
+// ======= displaying comments ==========
+const writeCommentFormContainer = document.querySelector(
+  "#commentFormContainer"
+);
+const showFormBtn = document.querySelector("#displayCommentBtn");
+const commentForm = document.querySelector("#writeCommentForm");
+
+let commentMode = false;
+// let commentMode = false;
+
+function appendCommentForm() {
+  let form = document.createElement("form");
+  form.setAttribute("id", "writeCommentForm");
+
+  let emailDiv = document.createElement("div");
+  emailDiv.setAttribute("class", "input-field");
+  let emailLabel = document.createElement("label");
+  let labeEmailContent = document.createTextNode("Your email");
+  emailLabel.appendChild(labeEmailContent);
+  let emailInput = document.createElement("input");
+  emailInput.setAttribute("id", "comment_email");
+
+  emailDiv.appendChild(emailLabel);
+  emailDiv.appendChild(emailInput);
+
+  let contentDiv = document.createElement("div");
+  contentDiv.setAttribute("class", "input-field");
+  let contentLabel = document.createElement("label");
+  let labelContent = document.createTextNode("Your comment");
+  contentLabel.appendChild(labelContent);
+  let contentInput = document.createElement("textarea");
+  contentInput.setAttribute("id", "comment_subject");
+
+  contentDiv.appendChild(contentLabel);
+  contentDiv.appendChild(contentInput);
+
+  let buttonDiv = document.createElement("div");
+  buttonDiv.setAttribute("class", "input-field");
+  let replyCommentBtn = document.createElement("button");
+  replyCommentBtn.setAttribute("id", "reply_to_post");
+  let btn_content = document.createTextNode("reply");
+  replyCommentBtn.appendChild(btn_content);
+
+  buttonDiv.appendChild(replyCommentBtn);
+
+  form.appendChild(emailDiv);
+  form.appendChild(contentDiv);
+  form.appendChild(buttonDiv);
+
+  writeCommentFormContainer.appendChild(form);
+}
+
+const removeCommentForm = () => {
+  let commentForm = document.getElementById("writeCommentForm");
+  writeCommentFormContainer.removeChild(commentForm);
+};
+
+if (showFormBtn !== null) {
+  showFormBtn.addEventListener("click", () => {
+    if (commentMode == false) {
+      commentMode = true;
+      writeCommentFormContainer.style.display = "block";
+      appendCommentForm();
+    }
+  });
+}
