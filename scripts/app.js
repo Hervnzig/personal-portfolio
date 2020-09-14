@@ -204,6 +204,7 @@ const getPost = async () => {
     .catch((err) => console.log(err));
 
   currentPostId = post.id;
+  localStorage.setItem("currentPostId", currentPostId);
   currentPostTitle = post.data().blog_title;
   currentPostAuthor = post.data().blog_author;
   currentPostDate = post.data().blog_date;

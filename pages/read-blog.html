@@ -107,6 +107,22 @@
       <button id="displayCommentBtn" class="comment_btn">Drop a comment</button>
     </section>
     <section class="comment-block" id="all_comments">
+      <div id="commentFormContainer" class="hide">
+        <form action="" id="writeCommentForm">
+          <div class="input-field">
+            <label for="comment_email">Your email</label>
+            <input type="email" required id="comment_email">
+          </div>
+          <div class="input-field">
+            <label for="comment_email">Your reply</label>
+            <textarea name="content" cols="30" rows="10" id="comment_subject"></textarea>
+          </div>
+          <div class="input-field">
+            <input type="submit">
+          </div>
+        </form>
+      </div>
+
       <div>
         <div class="all_comments">
           <a class="comment-user" href="#">hnow23</a>
@@ -115,8 +131,6 @@
             a bigger logo
           </p>
         </div>
-      </div>
-      <div id="commentFormContainer" style="display: none;">
       </div>
     </section>
 
@@ -178,6 +192,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
   <script src="../scripts/firebase.js"></script>
+  <script src="../scripts/comments.js"></script>
   <script src="../scripts/app.js"></script>
   <script src="../scripts/auth.js"></script>
   <script src="../scripts/uiscripts.js"></script>
