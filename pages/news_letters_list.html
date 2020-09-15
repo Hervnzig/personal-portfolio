@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../styles/styles.css" rel="stylesheet" />
-    <title>Edit posts</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/common.css">
+    <title>Newsletters list</title>
 </head>
 
 <body>
@@ -98,42 +99,30 @@
         </div>
     </div>
 
-    <section class="main-width-adjust dash-settings-content">
-        <a href="./blogs_dash.html" id="back" class="go-back">❮ Go back</a>
-        <div id="snackbar">Not logged-in.</div>
-        <h2>Let's Blog</h2>
-        <button id="delete" class="danger">Delete post</button>
-        <div id="snackbar">Not logged-in.</div>
-        <div class="full-blog blog-settings">
-            <div class="edit-block">
-                <button id="edit">Edit</button> <span>click this button</span>
-                <div id="editFormContainer"></div>
-            </div>
-            <div id="read_post" class="preview-blog"></div>
-        </div>
-        <hr />
-        <section>
-            <h2>Rections on this post</h2>
-            <section id="all_comments" class="comment-block">
-                <div id="view_comments">
-                </div>
-            </section>
-        </section>
 
+    <section class="main-width-adjust">
+        <div class="main-section">
+
+            <strong></strong>
+            <h2>People in you Newsletter feed</h2></strong>
+            <div class="newsletter_list">
+                <a href="./create-blog.html" class="to-new-blog">Write new blog</a>
+                <a href="./news_letters_list.html" class="to-new-blog">Send Newsletter to your people</a>
+            </div>
+            <div id="snackbar">Not logged-in.</div>
+        </div>
     </section>
+
 
 
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
     <script src="../scripts/firebase.js"></script>
     <script src="../scripts/app.js"></script>
-    <script src="../scripts/blog_settings.js"></script>
     <script src="../scripts/admin_blogs.js"></script>
-    <script src="../scripts/comments.js"></script>
-    <script src="../scripts/display_blog.js"></script>
     <script src="../scripts/auth.js"></script>
     <script src="../scripts/uiscripts.js"></script>
 

@@ -18,34 +18,40 @@ if (commentForm !== null) {
   });
 }
 
+function renderComments(doc) {
+  let div = document.createElement("div");
+  div.setAttribute("class", "all_comments");
+  div.setAttribute("id", doc.id);
+
+  let anchorAuth = document.createElement("small");
+  anchorAuth.setAttribute("class", "comment-user");
+  let commentAuth = document.createTextNode(doc.data().comment_email);
+  anchorAuth.appendChild(commentAuth);
+
+  let theCommentblock = document.createElement("p");
+  let commentContent = document.createTextNode(doc.data().comment_content);
+  theCommentblock.appendChild(commentContent);
+
+  div.appendChild(anchorAuth);
+  div.appendChild(theCommentblock);
+
+  allComments.appendChild(div);
+
+  console.log(doc.id);
+}
+
 db.collection("comments")
   .where("post_id", "==", localStorage.getItem("currentPostId"))
-  .get()
-  .then(function (querySnapshot) {
-    querySnapshot.forEach(function (doc) {
-      // doc.data() is never undefined for query doc snapshots
-      (comments = doc.data().comment_content),
-        (comment_auths = doc.data().comment_email);
-      console.log(comments);
-
-      let div = document.createElement("div");
-      div.setAttribute("class", "all_comments");
-
-      let anchorAuth = document.createElement("small");
-      anchorAuth.setAttribute("class", "comment-user");
-      let commentAuth = document.createTextNode(comment_auths);
-      anchorAuth.appendChild(commentAuth);
-
-      let theCommentblock = document.createElement("p");
-      let commentContent = document.createTextNode(comments);
-      theCommentblock.appendChild(commentContent);
-
-      div.appendChild(anchorAuth);
-      div.appendChild(theCommentblock);
-
-      allComments.appendChild(div);
+  .onSnapshot((snapshot) => {
+    let changes = snapshot.docChanges();
+    // console.log(changes);
+    changes.forEach((change) => {
+      if (change.type == "added") {
+        renderComments(change.doc);
+      } else if (change.type == "removed") {
+        console.log(
+          doc.id + "can't be removed, unless admin privileges allows"
+        );
+      }
     });
-  })
-  .catch(function (error) {
-    console.log("Error getting documents: ", error);
   });
